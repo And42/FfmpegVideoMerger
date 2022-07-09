@@ -19,27 +19,27 @@ namespace FfmpegVideoMerger.Resources.Localizations {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StringResources {
+    internal class StringResources_ru {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StringResources() {
+        internal StringResources_ru() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FfmpegVideoMerger.Resources.Localizations.StringResources", typeof(StringResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FfmpegVideoMerger.Resources.Localizations.StringResources.ru", typeof(StringResources_ru).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,216 +61,216 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Audio file:.
+        ///   Looks up a localized string similar to Файл аудио:.
         /// </summary>
-        public static string AudioFile {
+        internal static string AudioFile {
             get {
                 return ResourceManager.GetString("AudioFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Audio identifiers are not unique.
+        ///   Looks up a localized string similar to Идентификаторы аудио файлов не уникальные.
         /// </summary>
-        public static string AudioIdsNotUnique {
+        internal static string AudioIdsNotUnique {
             get {
                 return ResourceManager.GetString("AudioIdsNotUnique", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Audio identifier regular expression:.
+        ///   Looks up a localized string similar to Регулярка идентификатора аудио:.
         /// </summary>
-        public static string AudioRegularExpression {
+        internal static string AudioRegularExpression {
             get {
                 return ResourceManager.GetString("AudioRegularExpression", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to Отмена.
         /// </summary>
-        public static string Cancel {
+        internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose.
+        ///   Looks up a localized string similar to Выбрать.
         /// </summary>
-        public static string Choose {
+        internal static string Choose {
             get {
                 return ResourceManager.GetString("Choose", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Drop audio files here (or click).
+        ///   Looks up a localized string similar to Перетащите файлы аудио сюда (или нажмите).
         /// </summary>
-        public static string DropAudioFilesHere {
+        internal static string DropAudioFilesHere {
             get {
                 return ResourceManager.GetString("DropAudioFilesHere", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Drop video files here (or click).
+        ///   Looks up a localized string similar to Перетащите файлы видео сюда (или нажмите).
         /// </summary>
-        public static string DropVideoFilesHere {
+        internal static string DropVideoFilesHere {
             get {
                 return ResourceManager.GetString("DropVideoFilesHere", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error.
+        ///   Looks up a localized string similar to Ошибка.
         /// </summary>
-        public static string Error {
+        internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Example:.
+        ///   Looks up a localized string similar to Пример:.
         /// </summary>
-        public static string Example {
+        internal static string Example {
             get {
                 return ResourceManager.GetString("Example", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language:.
+        ///   Looks up a localized string similar to Язык:.
         /// </summary>
-        public static string Language {
+        internal static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiple Files.
+        ///   Looks up a localized string similar to Несколько файлов.
         /// </summary>
-        public static string MultipleFiles {
+        internal static string MultipleFiles {
             get {
                 return ResourceManager.GetString("MultipleFiles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No audio found for video: path = &quot;{0}&quot;, output name = &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Не удалось найти аудио для видео: путь = &quot;{0}&quot;, итоговое название = &quot;{1}&quot;.
         /// </summary>
-        public static string NoAudioFoundForVideo {
+        internal static string NoAudioFoundForVideo {
             get {
                 return ResourceManager.GetString("NoAudioFoundForVideo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No video found for audio: path = &quot;{0}&quot;, output name = &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Не удалось найти видео для аудио: путь = &quot;{0}&quot;, итоговое название = &quot;{1}&quot;.
         /// </summary>
-        public static string NoVideoFoundForAudio {
+        internal static string NoVideoFoundForAudio {
             get {
                 return ResourceManager.GetString("NoVideoFoundForAudio", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output directory:.
+        ///   Looks up a localized string similar to Папка с итоговыми файлами:.
         /// </summary>
-        public static string OutputDirectory {
+        internal static string OutputDirectory {
             get {
                 return ResourceManager.GetString("OutputDirectory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output file:.
+        ///   Looks up a localized string similar to Итоговый файл:.
         /// </summary>
-        public static string OutputFile {
+        internal static string OutputFile {
             get {
                 return ResourceManager.GetString("OutputFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output files pattern:.
+        ///   Looks up a localized string similar to Название итоговых файлов.
         /// </summary>
-        public static string OutputsExpression {
+        internal static string OutputsExpression {
             get {
                 return ResourceManager.GetString("OutputsExpression", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Process.
+        ///   Looks up a localized string similar to Обработать.
         /// </summary>
-        public static string Process {
+        internal static string Process {
             get {
                 return ResourceManager.GetString("Process", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove.
+        ///   Looks up a localized string similar to Убрать.
         /// </summary>
-        public static string Remove {
+        internal static string Remove {
             get {
                 return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Настройки.
         /// </summary>
-        public static string Settings {
+        internal static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Single File.
+        ///   Looks up a localized string similar to Один файл.
         /// </summary>
-        public static string SingleFile {
+        internal static string SingleFile {
             get {
                 return ResourceManager.GetString("SingleFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video file:.
+        ///   Looks up a localized string similar to Файл видео:.
         /// </summary>
-        public static string VideoFile {
+        internal static string VideoFile {
             get {
                 return ResourceManager.GetString("VideoFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video identifiers are not unique.
+        ///   Looks up a localized string similar to Идентификаторы видео файлов не уникальные.
         /// </summary>
-        public static string VideoIdsNotUnique {
+        internal static string VideoIdsNotUnique {
             get {
                 return ResourceManager.GetString("VideoIdsNotUnique", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Video identifier regular expression:.
+        ///   Looks up a localized string similar to Регулярка идентификатора видео:.
         /// </summary>
-        public static string VideoRegularExpression {
+        internal static string VideoRegularExpression {
             get {
                 return ResourceManager.GetString("VideoRegularExpression", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zero padding digits:.
+        ///   Looks up a localized string similar to Количество цифр для дополнения нулём:.
         /// </summary>
-        public static string ZeroPaddingDigits {
+        internal static string ZeroPaddingDigits {
             get {
                 return ResourceManager.GetString("ZeroPaddingDigits", resourceCulture);
             }

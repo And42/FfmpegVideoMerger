@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AudioFile" xml:space="preserve">
+        <value>Файл аудио:</value>
+    </data>
+    <data name="Cancel" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="Choose" xml:space="preserve">
+        <value>Выбрать</value>
+    </data>
+    <data name="AudioIdsNotUnique" xml:space="preserve">
+        <value>Идентификаторы аудио файлов не уникальные</value>
+    </data>
+    <data name="AudioRegularExpression" xml:space="preserve">
+        <value>Регулярка идентификатора аудио:</value>
+    </data>
+    <data name="DropAudioFilesHere" xml:space="preserve">
+        <value>Перетащите файлы аудио сюда (или нажмите)</value>
+    </data>
+    <data name="DropVideoFilesHere" xml:space="preserve">
+        <value>Перетащите файлы видео сюда (или нажмите)</value>
+    </data>
+    <data name="Error" xml:space="preserve">
+        <value>Ошибка</value>
+    </data>
+    <data name="Example" xml:space="preserve">
+        <value>Пример:</value>
+    </data>
+    <data name="MultipleFiles" xml:space="preserve">
+        <value>Несколько файлов</value>
+    </data>
+    <data name="SingleFile" xml:space="preserve">
+        <value>Один файл</value>
+    </data>
+    <data name="VideoFile" xml:space="preserve">
+        <value>Файл видео:</value>
+    </data>
+    <data name="VideoIdsNotUnique" xml:space="preserve">
+        <value>Идентификаторы видео файлов не уникальные</value>
+    </data>
+    <data name="VideoRegularExpression" xml:space="preserve">
+        <value>Регулярка идентификатора видео:</value>
+    </data>
+    <data name="Remove" xml:space="preserve">
+        <value>Убрать</value>
+    </data>
+    <data name="Process" xml:space="preserve">
+        <value>Обработать</value>
+    </data>
+    <data name="OutputsExpression" xml:space="preserve">
+        <value>Название итоговых файлов</value>
+    </data>
+    <data name="OutputFile" xml:space="preserve">
+        <value>Итоговый файл:</value>
+    </data>
+    <data name="OutputDirectory" xml:space="preserve">
+        <value>Папка с итоговыми файлами:</value>
+    </data>
+    <data name="NoVideoFoundForAudio" xml:space="preserve">
+        <value>Не удалось найти видео для аудио: путь = "{0}", итоговое название = "{1}"</value>
+    </data>
+    <data name="NoAudioFoundForVideo" xml:space="preserve">
+        <value>Не удалось найти аудио для видео: путь = "{0}", итоговое название = "{1}"</value>
+    </data>
+    <data name="ZeroPaddingDigits" xml:space="preserve">
+        <value>Количество цифр для дополнения нулём:</value>
+    </data>
+    <data name="Settings" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+    <data name="Language" xml:space="preserve">
+        <value>Язык:</value>
+    </data>
+</root>

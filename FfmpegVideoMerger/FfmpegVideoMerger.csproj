@@ -19,6 +19,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StringResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Localizations\StringResources.ru.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringResources.ru.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +34,10 @@
     <EmbeddedResource Update="Resources\StringResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Localizations\StringResources.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

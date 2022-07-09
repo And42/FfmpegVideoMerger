@@ -10,7 +10,7 @@
     d:DataContext="{d:DesignInstance local:MultipleFilesViewModel}"
     Title="MultipleFilesPage">
 
-    <Grid Margin="8">
+    <Grid>
         <Grid.Resources>
             <DataTemplate
                 x:Key="SingleFileTemplate"

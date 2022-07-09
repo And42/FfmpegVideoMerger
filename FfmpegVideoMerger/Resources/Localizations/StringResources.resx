@@ -183,4 +183,10 @@
   <data name="OutputDirectory" xml:space="preserve">
     <value>Output directory:</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language:</value>
+  </data>
 </root>

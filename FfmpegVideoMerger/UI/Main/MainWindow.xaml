@@ -25,5 +25,11 @@
 
             <Frame Source="MultipleFiles/MultipleFilesPage.xaml"/>
         </TabItem>
+        
+        <TabItem
+            Header="{x:Static localizations:StringResources.Settings}">
+
+            <Frame Source="Settings/SettingsPage.xaml"/>
+        </TabItem>
     </TabControl>
 </Window>
