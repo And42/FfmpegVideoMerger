@@ -21,4 +21,8 @@ public static class CollectionUtils {
     public static TOutput[] ConvertAll<TInput, TOutput>(this TInput[] self, Converter<TInput, TOutput> converter) {
         return Array.ConvertAll(self, converter);
     }
+
+    public static IEnumerable<KeyValuePair<int, T>> Indexed<T>(this IEnumerable<T> self) {
+        return self.Select((it, index) => index.To(it));
+    }
 }

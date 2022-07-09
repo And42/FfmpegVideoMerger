@@ -70,6 +70,24 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Audio identifiers are not unique.
+        /// </summary>
+        public static string AudioIdsNotUnique {
+            get {
+                return ResourceManager.GetString("AudioIdsNotUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Audio identifier regular expression:.
+        /// </summary>
+        public static string AudioRegularExpression {
+            get {
+                return ResourceManager.GetString("AudioRegularExpression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -106,6 +124,24 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example:.
+        /// </summary>
+        public static string Example {
+            get {
+                return ResourceManager.GetString("Example", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Multiple Files.
         /// </summary>
         public static string MultipleFiles {
@@ -115,11 +151,47 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No audio found for video: path = &quot;{0}&quot;, output name = &quot;{1}&quot;.
+        /// </summary>
+        public static string NoAudioFoundForVideo {
+            get {
+                return ResourceManager.GetString("NoAudioFoundForVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No video found for audio: path = &quot;{0}&quot;, output name = &quot;{1}&quot;.
+        /// </summary>
+        public static string NoVideoFoundForAudio {
+            get {
+                return ResourceManager.GetString("NoVideoFoundForAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output directory:.
+        /// </summary>
+        public static string OutputDirectory {
+            get {
+                return ResourceManager.GetString("OutputDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Output file:.
         /// </summary>
         public static string OutputFile {
             get {
                 return ResourceManager.GetString("OutputFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output files pattern:.
+        /// </summary>
+        public static string OutputsExpression {
+            get {
+                return ResourceManager.GetString("OutputsExpression", resourceCulture);
             }
         }
         
@@ -156,6 +228,33 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         public static string VideoFile {
             get {
                 return ResourceManager.GetString("VideoFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video identifiers are not unique.
+        /// </summary>
+        public static string VideoIdsNotUnique {
+            get {
+                return ResourceManager.GetString("VideoIdsNotUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video identifier regular expression:.
+        /// </summary>
+        public static string VideoRegularExpression {
+            get {
+                return ResourceManager.GetString("VideoRegularExpression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero padding digits:.
+        /// </summary>
+        public static string ZeroPaddingDigits {
+            get {
+                return ResourceManager.GetString("ZeroPaddingDigits", resourceCulture);
             }
         }
     }

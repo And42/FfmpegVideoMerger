@@ -19,112 +19,252 @@
                 <Grid Margin="0 4">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="8"/>
-                        <ColumnDefinition Width="Auto" SharedSizeGroup="RegexNumber"/>
-                        <ColumnDefinition Width="8"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="RegexNumber" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <TextBox
                         Grid.Column="0"
                         IsReadOnly="True"
                         Text="{Binding FileName, Mode=OneTime}"
-                        ToolTip="{Binding FilePath, Mode=OneTime}"/>
-                    
+                        ToolTip="{Binding FilePath, Mode=OneTime}" />
+
                     <TextBox
                         Grid.Column="2"
                         IsReadOnly="True"
                         HorizontalContentAlignment="Center"
-                        Text="{Binding RelationNumber, Mode=OneWay}"/>
-                    
+                        Text="{Binding RelationId, Mode=OneWay}" />
+
                     <Button
                         Grid.Column="4"
                         Content="{x:Static localizations:StringResources.Remove}"
                         Command="{Binding DeleteCommand}"
-                        CommandParameter="{Binding}"/>
+                        CommandParameter="{Binding}" />
                 </Grid>
             </DataTemplate>
 
             <Style
                 x:Key="DropTargetBorderStyle"
                 TargetType="Border">
-                
-                <Setter Property="Padding" Value="8"/>
-                <Setter Property="Background" Value="Beige"/>
-                <Setter Property="BorderBrush" Value="Gray"/>
-                <Setter Property="BorderThickness" Value="2"/>
+
+                <Setter Property="Padding" Value="8" />
+                <Setter Property="Background" Value="Beige" />
+                <Setter Property="BorderBrush" Value="Gray" />
+                <Setter Property="BorderThickness" Value="2" />
             </Style>
-            
+
             <Style
                 x:Key="DropTargetTextStyle"
                 TargetType="TextBlock"
                 BasedOn="{StaticResource {x:Type TextBlock}}">
-                
-                <Setter Property="VerticalAlignment" Value="Center"/>
+
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
             </Style>
         </Grid.Resources>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="100"/>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="8"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto" MinHeight="100" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="8"/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="8" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+
         <Border
             x:Name="VideoDropTarget"
             Grid.Row="0"
             Grid.Column="0"
-            Style="{StaticResource DropTargetBorderStyle}">
-            
+            Style="{StaticResource DropTargetBorderStyle}"
+            MouseLeftButtonUp="VideoDropTarget_OnMouseLeftButtonUp">
+
             <TextBlock
                 Style="{StaticResource DropTargetTextStyle}"
-                Text="{x:Static localizations:StringResources.DropVideoFilesHere}"/>
-            
+                Text="{x:Static localizations:StringResources.DropVideoFilesHere}" />
+
         </Border>
-        
+
         <Border
             x:Name="AudioDropTarget"
             Grid.Row="0"
             Grid.Column="2"
-            Style="{StaticResource DropTargetBorderStyle}">
-            
+            Style="{StaticResource DropTargetBorderStyle}"
+            MouseLeftButtonUp="AudioDropTarget_OnMouseLeftButtonUp">
+
             <TextBlock
                 Style="{StaticResource DropTargetTextStyle}"
-                Text="{x:Static localizations:StringResources.DropAudioFilesHere}"/>
-            
+                Text="{x:Static localizations:StringResources.DropAudioFilesHere}" />
+
         </Border>
-        
+
         <ItemsControl
             Grid.Row="2"
             Grid.Column="0"
             Grid.IsSharedSizeScope="True"
             ItemsSource="{Binding VideoFiles}"
-            ItemTemplate="{StaticResource SingleFileTemplate}"/>
-        
+            ItemTemplate="{StaticResource SingleFileTemplate}" />
+
         <ItemsControl
             Grid.Row="2"
             Grid.Column="2"
             Grid.IsSharedSizeScope="True"
             ItemsSource="{Binding AudioFiles}"
-            ItemTemplate="{StaticResource SingleFileTemplate}"/>
-        
-        <TextBox
+            ItemTemplate="{StaticResource SingleFileTemplate}" />
+
+        <DockPanel
             Grid.Row="4"
             Grid.Column="0"
-            Text="{Binding VideoFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <TextBox
+            LastChildFill="True">
+
+            <TextBlock
+                DockPanel.Dock="Left"
+                VerticalAlignment="Center"
+                Text="{x:Static localizations:StringResources.VideoRegularExpression}" />
+
+            <TextBox
+                DockPanel.Dock="Left"
+                Margin="8 0 0 0"
+                Text="{Binding VideoFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </DockPanel>
+
+        <DockPanel
             Grid.Row="4"
             Grid.Column="2"
-            Text="{Binding AudioFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            LastChildFill="True">
+
+            <TextBlock
+                DockPanel.Dock="Left"
+                VerticalAlignment="Center"
+                Text="{x:Static localizations:StringResources.AudioRegularExpression}" />
+
+            <TextBox
+                DockPanel.Dock="Left"
+                Margin="8 0 0 0"
+                Text="{Binding AudioFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </DockPanel>
+
+        <StackPanel
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Orientation="Horizontal">
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Text="{x:Static localizations:StringResources.OutputsExpression}" />
+
+            <TextBox
+                Margin="8 0 0 0"
+                MinWidth="200"
+                Text="{Binding OutputsExpression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock
+                Margin="8 0 0 0"
+                VerticalAlignment="Center"
+                Text="{x:Static localizations:StringResources.ZeroPaddingDigits}" />
+
+            <TextBox
+                x:Name="ZeroPaddingDigitsTextBox"
+                Margin="8 0 0 0"
+                MinWidth="50"
+                Text="{Binding ZeroPaddingDigits, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock
+                Margin="8 0 0 0"
+                VerticalAlignment="Center"
+                Text="{x:Static localizations:StringResources.Example}" />
+
+            <TextBox
+                Margin="8 0 0 0"
+                MinWidth="200"
+                IsReadOnly="True"
+                Text="{Binding ExampleOutputFileName, Mode=OneWay}" />
+
+        </StackPanel>
+
+        <Grid
+            Grid.Row="8"
+            Grid.Column="0"
+            Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="{x:Static localizations:StringResources.OutputDirectory}" />
+
+            <TextBox
+                x:Name="OutputDirectoryPathTextBox"
+                Grid.Column="2"
+                Text="{Binding OutputDirectoryPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Button
+                Grid.Column="4"
+                Command="{Binding PickOutputDirectoryCommand}"
+                Content="{x:Static localizations:StringResources.Choose}" />
+
+        </Grid>
+
+        <TextBox
+            x:Name="FfmpegOutputTextBox"
+            Grid.Row="10"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            IsReadOnly="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            VerticalContentAlignment="Top"
+            Text="{Binding FfmpegOutput, Mode=OneWay}" />
+
+        <ProgressBar
+            Grid.Row="12"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Height="10"
+            Maximum="1"
+            Value="{Binding Progress, Mode=OneWay}" />
+
+        <StackPanel
+            Grid.Row="14"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Orientation="Horizontal">
+
+            <Button
+                Command="{Binding ProcessCommand}"
+                Content="{x:Static localizations:StringResources.Process}" />
+
+            <Button
+                Margin="8 0 0 0"
+                Command="{Binding CancelCommand}"
+                Content="{x:Static localizations:StringResources.Cancel}" />
+
+        </StackPanel>
     </Grid>
 </Page>

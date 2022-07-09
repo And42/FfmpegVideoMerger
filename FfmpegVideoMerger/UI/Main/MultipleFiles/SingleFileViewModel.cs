@@ -10,11 +10,11 @@ public class SingleFileViewModel : ViewModel {
 
     public string FileName { get; }
 
-    public string RelationNumber {
-        get => _relationNumber;
-        set => SetProperty(ref _relationNumber, value);
+    public string RelationId {
+        get => _relationId;
+        set => SetProperty(ref _relationId, value);
     }
-    private string _relationNumber = string.Empty;
+    private string _relationId = string.Empty;
 
     public ICommand DeleteCommand { get; }
 

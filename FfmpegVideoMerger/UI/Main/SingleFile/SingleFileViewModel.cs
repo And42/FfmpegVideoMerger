@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,95 +12,89 @@ public class SingleFileViewModel : ViewModel {
 
     private CancellationTokenSource? _activeProcessCancellation;
     
-    public string SingleVideoFilePath {
-        get => _singleVideoFilePath;
-        set => SetProperty(ref _singleVideoFilePath, value);
+    public string VideoFilePath {
+        get => _videoFilePath;
+        set => SetProperty(ref _videoFilePath, value);
     }
+    private string _videoFilePath = string.Empty;
 
-    private string _singleVideoFilePath =
-        @"E:\Фильмы\Атака титанов\9. Shingeki no Kyojin TV-4 part 2\[SOFCJ-Raws] Shingeki no Kyojin - The Final Season Part 2 - 01 (WEBRip 1920x1080 x264 AAC).mkv";
-
-    public string SingleAudioFilePath {
-        get => _singleAudioFilePath;
-        set => SetProperty(ref _singleAudioFilePath, value);
+    public string AudioFilePath {
+        get => _audioFilePath;
+        set => SetProperty(ref _audioFilePath, value);
     }
+    private string _audioFilePath = string.Empty;
 
-    private string _singleAudioFilePath =
-        @"E:\Фильмы\Атака титанов\9. Shingeki no Kyojin TV-4 part 2\Rus Dubs\Dub [StudioBand]\[SOFCJ-Raws] Shingeki no Kyojin - The Final Season Part 2 - 01 (WEBRip 1920x1080 x264 AAC).mka";
-
-    public string SingleOutputFile {
-        get => _singleOutputFile;
-        set => SetProperty(ref _singleOutputFile, value);
+    public string OutputFile {
+        get => _outputFile;
+        set => SetProperty(ref _outputFile, value);
     }
+    private string _outputFile = string.Empty;
 
-    private string _singleOutputFile =
-        @"E:\Фильмы\Атака титанов\9. Shingeki no Kyojin TV-4 part 2\[SOFCJ-Raws] Shingeki no Kyojin - The Final Season Part 2 - 01 (WEBRip 1920x1080 x264 AAC)_output.mkv";
-
-    public string SingleFileFfmpegCommand => FfmpegCommandGenerator.Generate(
-        videoPath: SingleVideoFilePath,
-        audioPaths: new List<string> { SingleAudioFilePath },
-        outputPath: SingleOutputFile
+    public string FfmpegCommand => FfmpegCommandGenerator.Generate(
+        videoPath: VideoFilePath,
+        audioPath: AudioFilePath,
+        outputPath: OutputFile
     );
 
-    public string SingleFileFfmpegOutput {
-        get => _singleFileFfmpegOutput;
-        set => SetProperty(ref _singleFileFfmpegOutput, value);
+    public string FfmpegOutput {
+        get => _ffmpegOutput;
+        private set => SetProperty(ref _ffmpegOutput, value);
     }
-    private string _singleFileFfmpegOutput = string.Empty;
+    private string _ffmpegOutput = string.Empty;
 
     public bool IsProcessing => _activeProcessCancellation != null;
 
-    public ActionCommand ChooseSingleVideoFileCommand { get; }
-    public ActionCommand ChooseSingleAudioFileCommand { get; }
-    public ActionCommand ChooseSingleOutputFileCommand { get; }
-    public ActionCommand ProcessSingleFileCommand { get; }
+    public ActionCommand ChooseVideoFileCommand { get; }
+    public ActionCommand ChooseAudioFileCommand { get; }
+    public ActionCommand ChooseOutputFileCommand { get; }
+    public ActionCommand ProcessFileCommand { get; }
     public ActionCommand CancelProcessCommand { get; }
 
     public SingleFileViewModel() {
-        ChooseSingleVideoFileCommand = new ActionCommand(ChooseSingleVideoFileCommandExecute, () => !IsProcessing);
-        ChooseSingleAudioFileCommand = new ActionCommand(ChooseSingleAudioFileExecute, () => !IsProcessing);
-        ChooseSingleOutputFileCommand = new ActionCommand(ChooseSingleOutputFileCommandExecute, () => !IsProcessing);
-        ProcessSingleFileCommand = new ActionCommand(ProcessSingleFileCommandExecute, () => !IsProcessing);
+        ChooseVideoFileCommand = new ActionCommand(ChooseVideoFileCommandExecute, () => !IsProcessing);
+        ChooseAudioFileCommand = new ActionCommand(ChooseAudioFileExecute, () => !IsProcessing);
+        ChooseOutputFileCommand = new ActionCommand(ChooseOutputFileCommandExecute, () => !IsProcessing);
+        ProcessFileCommand = new ActionCommand(ProcessFileCommandExecute, () => !IsProcessing);
         CancelProcessCommand = new ActionCommand(CancelProcessCommandExecute, () => IsProcessing);
     }
 
-    private void ChooseSingleVideoFileCommandExecute() {
+    private void ChooseVideoFileCommandExecute() {
         var openDialog = new OpenFileDialog();
         if (openDialog.ShowDialog() != true) {
             return;
         }
 
-        SingleVideoFilePath = openDialog.FileName;
+        VideoFilePath = openDialog.FileName;
     }
 
-    private void ChooseSingleAudioFileExecute() {
+    private void ChooseAudioFileExecute() {
         var openDialog = new OpenFileDialog();
         if (openDialog.ShowDialog() != true) {
             return;
         }
 
-        SingleAudioFilePath = openDialog.FileName;
+        AudioFilePath = openDialog.FileName;
     }
 
-    private void ChooseSingleOutputFileCommandExecute() {
+    private void ChooseOutputFileCommandExecute() {
         var saveDialog = new SaveFileDialog();
         if (saveDialog.ShowDialog() != true) {
             return;
         }
 
-        SingleOutputFile = saveDialog.FileName;
+        OutputFile = saveDialog.FileName;
     }
 
-    private async void ProcessSingleFileCommandExecute() {
+    private async void ProcessFileCommandExecute() {
         try {
-            SingleFileFfmpegOutput = string.Empty;
+            FfmpegOutput = string.Empty;
             _activeProcessCancellation = new CancellationTokenSource();
             OnPropertyChanged(nameof(IsProcessing));
 
             await CommandExecutor.Execute(
                 "ffmpeg",
-                SingleFileFfmpegCommand,
-                data => SingleFileFfmpegOutput += data + Environment.NewLine,
+                FfmpegCommand,
+                data => FfmpegOutput += data + Environment.NewLine,
                 _activeProcessCancellation.Token
             );
         } catch (TaskCanceledException) {
@@ -119,16 +112,16 @@ public class SingleFileViewModel : ViewModel {
         base.OnPropertyChanged(propertyName);
         
         switch (propertyName) {
-            case nameof(SingleVideoFilePath):
-            case nameof(SingleAudioFilePath):
-            case nameof(SingleOutputFile):
-                base.OnPropertyChanged(nameof(SingleFileFfmpegCommand));
+            case nameof(VideoFilePath):
+            case nameof(AudioFilePath):
+            case nameof(OutputFile):
+                base.OnPropertyChanged(nameof(FfmpegCommand));
                 break;
             case nameof(IsProcessing):
-                ChooseSingleVideoFileCommand.RaiseCanExecuteChanged();
-                ChooseSingleAudioFileCommand.RaiseCanExecuteChanged();
-                ChooseSingleOutputFileCommand.RaiseCanExecuteChanged();
-                ProcessSingleFileCommand.RaiseCanExecuteChanged();
+                ChooseVideoFileCommand.RaiseCanExecuteChanged();
+                ChooseAudioFileCommand.RaiseCanExecuteChanged();
+                ChooseOutputFileCommand.RaiseCanExecuteChanged();
+                ProcessFileCommand.RaiseCanExecuteChanged();
                 CancelProcessCommand.RaiseCanExecuteChanged();
                 break;
         }

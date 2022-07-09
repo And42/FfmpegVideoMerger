@@ -17,4 +17,8 @@ public static class StringUtils {
     public static bool IsNotEmpty(this string self) {
         return !self.IsEmpty();
     }
+
+    public static string Format(this string self, object? arg0, object? arg1) {
+        return string.Format(self, arg0, arg1);
+    }
 }

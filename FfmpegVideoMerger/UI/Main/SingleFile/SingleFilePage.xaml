@@ -37,17 +37,17 @@
             VerticalAlignment="Center" />
 
         <TextBox
-            x:Name="SingleVideoFileTextBox"
+            x:Name="VideoFileTextBox"
             Grid.Row="0"
             Grid.Column="2"
-            Text="{Binding SingleVideoFilePath, Mode=TwoWay}" />
+            Text="{Binding VideoFilePath, Mode=TwoWay}" />
 
         <Button
             Grid.Row="0"
             Grid.Column="4"
             HorizontalAlignment="Left"
             Content="{x:Static localizations:StringResources.Choose}"
-            Command="{Binding ChooseSingleVideoFileCommand}" />
+            Command="{Binding ChooseVideoFileCommand}" />
 
         <TextBlock
             Grid.Row="2"
@@ -56,17 +56,17 @@
             VerticalAlignment="Center" />
 
         <TextBox
-            x:Name="SingleAudioFileTextBox"
+            x:Name="AudioFileTextBox"
             Grid.Row="2"
             Grid.Column="2"
-            Text="{Binding SingleAudioFilePath, Mode=TwoWay}" />
+            Text="{Binding AudioFilePath, Mode=TwoWay}" />
 
         <Button
             Grid.Row="2"
             Grid.Column="4"
             HorizontalAlignment="Left"
             Content="{x:Static localizations:StringResources.Choose}"
-            Command="{Binding ChooseSingleAudioFileCommand}" />
+            Command="{Binding ChooseAudioFileCommand}" />
 
         <TextBlock
             Grid.Row="4"
@@ -75,18 +75,18 @@
             VerticalAlignment="Center" />
 
         <TextBox
-            x:Name="SingleOutputFileTextBox"
+            x:Name="OutputFileTextBox"
             Grid.Row="4"
             Grid.Column="2"
             TextWrapping="Wrap"
-            Text="{Binding SingleOutputFile, Mode=TwoWay}" />
+            Text="{Binding OutputFile, Mode=TwoWay}" />
 
         <Button
             Grid.Row="4"
             Grid.Column="4"
             HorizontalAlignment="Left"
             Content="{x:Static localizations:StringResources.Choose}"
-            Command="{Binding ChooseSingleOutputFileCommand}" />
+            Command="{Binding ChooseOutputFileCommand}" />
 
         <TextBox
             Grid.Row="6"
@@ -94,10 +94,10 @@
             Grid.ColumnSpan="5"
             IsReadOnly="True"
             TextWrapping="Wrap"
-            Text="{Binding SingleFileFfmpegCommand, Mode=OneWay}" />
+            Text="{Binding FfmpegCommand, Mode=OneWay}" />
 
         <TextBox
-            x:Name="SingleFileFfmpegOutputTextBox"
+            x:Name="FfmpegOutputTextBox"
             Grid.Row="8"
             Grid.Column="0"
             Grid.ColumnSpan="5"
@@ -105,7 +105,7 @@
             IsReadOnly="True"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
-            Text="{Binding SingleFileFfmpegOutput, Mode=OneWay}" />
+            Text="{Binding FfmpegOutput, Mode=OneWay}" />
 
         <StackPanel
             Grid.Row="10"
@@ -115,7 +115,7 @@
 
             <Button
                 Content="{x:Static localizations:StringResources.Process}"
-                Command="{Binding ProcessSingleFileCommand}" />
+                Command="{Binding ProcessFileCommand}" />
 
             <Button
                 Margin="8 0 0 0"

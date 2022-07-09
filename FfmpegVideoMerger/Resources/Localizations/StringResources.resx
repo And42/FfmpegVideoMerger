@@ -150,4 +150,37 @@
   <data name="Remove" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="VideoRegularExpression" xml:space="preserve">
+    <value>Video identifier regular expression:</value>
+  </data>
+  <data name="AudioRegularExpression" xml:space="preserve">
+    <value>Audio identifier regular expression:</value>
+  </data>
+  <data name="OutputsExpression" xml:space="preserve">
+    <value>Output files pattern:</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>Example:</value>
+  </data>
+  <data name="ZeroPaddingDigits" xml:space="preserve">
+    <value>Zero padding digits:</value>
+  </data>
+  <data name="NoAudioFoundForVideo" xml:space="preserve">
+    <value>No audio found for video: path = "{0}", output name = "{1}"</value>
+  </data>
+  <data name="NoVideoFoundForAudio" xml:space="preserve">
+    <value>No video found for audio: path = "{0}", output name = "{1}"</value>
+  </data>
+  <data name="VideoIdsNotUnique" xml:space="preserve">
+    <value>Video identifiers are not unique</value>
+  </data>
+  <data name="AudioIdsNotUnique" xml:space="preserve">
+    <value>Audio identifiers are not unique</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="OutputDirectory" xml:space="preserve">
+    <value>Output directory:</value>
+  </data>
 </root>
