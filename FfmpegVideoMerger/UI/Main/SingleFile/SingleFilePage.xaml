@@ -1,0 +1,127 @@
+﻿<Page x:Class="FfmpegVideoMerger.UI.Main.SingleFile.SingleFilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
+      xmlns:singleFile="clr-namespace:FfmpegVideoMerger.UI.Main.SingleFile"
+      mc:Ignorable="d"
+      Title="SingleFilePage"
+      d:DataContext="{d:DesignInstance singleFile:SingleFileViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="8" />
+            <RowDefinition />
+            <RowDefinition Height="8" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="8" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="8" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="{x:Static localizations:StringResources.VideoFile}"
+            VerticalAlignment="Center" />
+
+        <TextBox
+            x:Name="SingleVideoFileTextBox"
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="{Binding SingleVideoFilePath, Mode=TwoWay}" />
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Content="{x:Static localizations:StringResources.Choose}"
+            Command="{Binding ChooseSingleVideoFileCommand}" />
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="{x:Static localizations:StringResources.AudioFile}"
+            VerticalAlignment="Center" />
+
+        <TextBox
+            x:Name="SingleAudioFileTextBox"
+            Grid.Row="2"
+            Grid.Column="2"
+            Text="{Binding SingleAudioFilePath, Mode=TwoWay}" />
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Content="{x:Static localizations:StringResources.Choose}"
+            Command="{Binding ChooseSingleAudioFileCommand}" />
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="0"
+            Text="{x:Static localizations:StringResources.OutputFile}"
+            VerticalAlignment="Center" />
+
+        <TextBox
+            x:Name="SingleOutputFileTextBox"
+            Grid.Row="4"
+            Grid.Column="2"
+            TextWrapping="Wrap"
+            Text="{Binding SingleOutputFile, Mode=TwoWay}" />
+
+        <Button
+            Grid.Row="4"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            Content="{x:Static localizations:StringResources.Choose}"
+            Command="{Binding ChooseSingleOutputFileCommand}" />
+
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            IsReadOnly="True"
+            TextWrapping="Wrap"
+            Text="{Binding SingleFileFfmpegCommand, Mode=OneWay}" />
+
+        <TextBox
+            x:Name="SingleFileFfmpegOutputTextBox"
+            Grid.Row="8"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            VerticalContentAlignment="Top"
+            IsReadOnly="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto"
+            Text="{Binding SingleFileFfmpegOutput, Mode=OneWay}" />
+
+        <StackPanel
+            Grid.Row="10"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            Orientation="Horizontal">
+
+            <Button
+                Content="{x:Static localizations:StringResources.Process}"
+                Command="{Binding ProcessSingleFileCommand}" />
+
+            <Button
+                Margin="8 0 0 0"
+                Content="{x:Static localizations:StringResources.Cancel}"
+                Command="{Binding CancelProcessCommand}" />
+
+        </StackPanel>
+    </Grid>
+</Page>

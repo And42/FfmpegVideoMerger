@@ -1,0 +1,130 @@
+﻿<Page
+    x:Class="FfmpegVideoMerger.UI.Main.MultipleFiles.MultipleFilesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FfmpegVideoMerger.UI.Main.MultipleFiles"
+    xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:MultipleFilesViewModel}"
+    Title="MultipleFilesPage">
+
+    <Grid Margin="8">
+        <Grid.Resources>
+            <DataTemplate
+                x:Key="SingleFileTemplate"
+                DataType="local:SingleFileViewModel">
+
+                <Grid Margin="0 4">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="RegexNumber"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBox
+                        Grid.Column="0"
+                        IsReadOnly="True"
+                        Text="{Binding FileName, Mode=OneTime}"
+                        ToolTip="{Binding FilePath, Mode=OneTime}"/>
+                    
+                    <TextBox
+                        Grid.Column="2"
+                        IsReadOnly="True"
+                        HorizontalContentAlignment="Center"
+                        Text="{Binding RelationNumber, Mode=OneWay}"/>
+                    
+                    <Button
+                        Grid.Column="4"
+                        Content="{x:Static localizations:StringResources.Remove}"
+                        Command="{Binding DeleteCommand}"
+                        CommandParameter="{Binding}"/>
+                </Grid>
+            </DataTemplate>
+
+            <Style
+                x:Key="DropTargetBorderStyle"
+                TargetType="Border">
+                
+                <Setter Property="Padding" Value="8"/>
+                <Setter Property="Background" Value="Beige"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="BorderThickness" Value="2"/>
+            </Style>
+            
+            <Style
+                x:Key="DropTargetTextStyle"
+                TargetType="TextBlock"
+                BasedOn="{StaticResource {x:Type TextBlock}}">
+                
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="100"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Border
+            x:Name="VideoDropTarget"
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource DropTargetBorderStyle}">
+            
+            <TextBlock
+                Style="{StaticResource DropTargetTextStyle}"
+                Text="{x:Static localizations:StringResources.DropVideoFilesHere}"/>
+            
+        </Border>
+        
+        <Border
+            x:Name="AudioDropTarget"
+            Grid.Row="0"
+            Grid.Column="2"
+            Style="{StaticResource DropTargetBorderStyle}">
+            
+            <TextBlock
+                Style="{StaticResource DropTargetTextStyle}"
+                Text="{x:Static localizations:StringResources.DropAudioFilesHere}"/>
+            
+        </Border>
+        
+        <ItemsControl
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.IsSharedSizeScope="True"
+            ItemsSource="{Binding VideoFiles}"
+            ItemTemplate="{StaticResource SingleFileTemplate}"/>
+        
+        <ItemsControl
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.IsSharedSizeScope="True"
+            ItemsSource="{Binding AudioFiles}"
+            ItemTemplate="{StaticResource SingleFileTemplate}"/>
+        
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="0"
+            Text="{Binding VideoFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="2"
+            Text="{Binding AudioFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</Page>
