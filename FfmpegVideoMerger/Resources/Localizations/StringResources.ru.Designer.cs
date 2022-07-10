@@ -61,6 +61,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to О программе.
+        /// </summary>
+        internal static string AboutProgram {
+            get {
+                return ResourceManager.GetString("AboutProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FfmpegVideoMerger.
         /// </summary>
         internal static string AppName {
@@ -133,6 +142,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Папка с данными:.
+        /// </summary>
+        internal static string DataDirectory {
+            get {
+                return ResourceManager.GetString("DataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Перетащите файлы аудио сюда (или нажмите).
         /// </summary>
         internal static string DropAudioFilesHere {
@@ -165,6 +183,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         internal static string Example {
             get {
                 return ResourceManager.GetString("Example", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Папка с исполняемым файлом:.
+        /// </summary>
+        internal static string ExecutableDirectory {
+            get {
+                return ResourceManager.GetString("ExecutableDirectory", resourceCulture);
             }
         }
         
@@ -273,6 +300,42 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         internal static string SingleFile {
             get {
                 return ResourceManager.GetString("SingleFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Лицензии программного обеспечения.
+        /// </summary>
+        internal static string SoftwareLicenses {
+            get {
+                return ResourceManager.GetString("SoftwareLicenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Исходный код:.
+        /// </summary>
+        internal static string SourceCode {
+            get {
+                return ResourceManager.GetString("SourceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не удалось открыть папку. Ошибка: &quot;{0}&quot;.
+        /// </summary>
+        internal static string UnableToOpenDirectory {
+            get {
+                return ResourceManager.GetString("UnableToOpenDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не удалось открыть ссылку. Ошибка: &quot;{0}&quot;.
+        /// </summary>
+        internal static string UnableToOpenLink {
+            get {
+                return ResourceManager.GetString("UnableToOpenLink", resourceCulture);
             }
         }
         
