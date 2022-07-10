@@ -46,16 +46,6 @@
             </DataTemplate>
 
             <Style
-                x:Key="DropTargetBorderStyle"
-                TargetType="Border">
-
-                <Setter Property="Padding" Value="8" />
-                <Setter Property="Background" Value="Beige" />
-                <Setter Property="BorderBrush" Value="Gray" />
-                <Setter Property="BorderThickness" Value="2" />
-            </Style>
-
-            <Style
                 x:Key="DropTargetTextStyle"
                 TargetType="TextBlock"
                 BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -88,31 +78,31 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Border
+        <GroupBox
             x:Name="VideoDropTarget"
             Grid.Row="0"
             Grid.Column="0"
-            Style="{StaticResource DropTargetBorderStyle}"
+            BorderThickness="1"
             MouseLeftButtonUp="VideoDropTarget_OnMouseLeftButtonUp">
 
             <TextBlock
                 Style="{StaticResource DropTargetTextStyle}"
                 Text="{x:Static localizations:StringResources.DropVideoFilesHere}" />
 
-        </Border>
+        </GroupBox>
 
-        <Border
+        <GroupBox
             x:Name="AudioDropTarget"
             Grid.Row="0"
             Grid.Column="2"
-            Style="{StaticResource DropTargetBorderStyle}"
+            BorderThickness="1"
             MouseLeftButtonUp="AudioDropTarget_OnMouseLeftButtonUp">
 
             <TextBlock
                 Style="{StaticResource DropTargetTextStyle}"
                 Text="{x:Static localizations:StringResources.DropAudioFilesHere}" />
 
-        </Border>
+        </GroupBox>
 
         <ItemsControl
             Grid.Row="2"
