@@ -10,8 +10,8 @@
     xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
     mc:Ignorable="d"
     Title="{x:Static localizations:StringResources.AppName}"
-    MinHeight="400"
-    MinWidth="500"
+    MinHeight="500"
+    MinWidth="600"
     WindowStartupLocation="CenterScreen"
     UseLayoutRounding="True"
     d:DataContext="{d:DesignInstance main:MainViewModel}">

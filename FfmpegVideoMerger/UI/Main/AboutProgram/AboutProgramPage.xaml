@@ -10,90 +10,103 @@
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance local:AboutProgramViewModel}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="8" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="8" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="8" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto"
+        attachedProperties:ScrollViewerConfigurator.DisableChildrenScroll="True">
 
-        <TextBlock Grid.Row="0">
-            <Run Text="{x:Static localizations:StringResources.SourceCode}" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-            <Hyperlink
-                NavigateUri="https://github.com/And42/FfmpegVideoMerger"
-                RequestNavigate="BrowserHyperlink_OnRequestNavigate">
-                <Run Text="https://github.com/And42/FfmpegVideoMerger" />
-            </Hyperlink>
-        </TextBlock>
+            <TextBlock
+                Grid.Row="0"
+                TextWrapping="Wrap">
 
-        <TextBlock Grid.Row="2">
-            <Run Text="{x:Static localizations:StringResources.ExecutableDirectory}" />
+                <Run Text="{x:Static localizations:StringResources.SourceCode}" />
 
-            <Hyperlink
-                NavigateUri="{Binding ExecutablePath, Mode=OneTime}"
-                RequestNavigate="DirectoryHyperlink_OnRequestNavigate">
-                <Run Text="{Binding ExecutablePath, Mode=OneTime}" />
-            </Hyperlink>
-        </TextBlock>
+                <Hyperlink
+                    NavigateUri="https://github.com/And42/FfmpegVideoMerger"
+                    RequestNavigate="BrowserHyperlink_OnRequestNavigate">
+                    <Run Text="https://github.com/And42/FfmpegVideoMerger" />
+                </Hyperlink>
+            </TextBlock>
 
-        <TextBlock Grid.Row="4">
-            <Run Text="{x:Static localizations:StringResources.DataDirectory}" />
+            <TextBlock
+                Grid.Row="2"
+                TextWrapping="Wrap">
 
-            <Hyperlink
-                NavigateUri="{Binding DataPath, Mode=OneTime}"
-                RequestNavigate="DirectoryHyperlink_OnRequestNavigate">
-                <Run Text="{Binding DataPath, Mode=OneTime}" />
-            </Hyperlink>
-        </TextBlock>
+                <Run Text="{x:Static localizations:StringResources.ExecutableDirectory}" />
 
-        <GroupBox
-            Grid.Row="6"
-            Header="{x:Static localizations:StringResources.SoftwareLicenses}">
-            <GroupBox.Resources>
-                <DataTemplate
-                    x:Key="LicenseTemplate"
-                    DataType="local:LicenseViewModel">
+                <Hyperlink
+                    NavigateUri="{Binding ExecutablePath, Mode=OneTime}"
+                    RequestNavigate="DirectoryHyperlink_OnRequestNavigate">
+                    <Run Text="{Binding ExecutablePath, Mode=OneTime}" />
+                </Hyperlink>
+            </TextBlock>
 
-                    <GroupBox
-                        Margin="0 8 0 0">
+            <TextBlock
+                Grid.Row="4"
+                TextWrapping="Wrap">
 
-                        <Expander
-                            Header="{Binding Library, Mode=OneTime}">
+                <Run Text="{x:Static localizations:StringResources.DataDirectory}" />
 
-                            <StackPanel
+                <Hyperlink
+                    NavigateUri="{Binding DataPath, Mode=OneTime}"
+                    RequestNavigate="DirectoryHyperlink_OnRequestNavigate">
+                    <Run Text="{Binding DataPath, Mode=OneTime}" />
+                </Hyperlink>
+            </TextBlock>
+
+            <GroupBox
+                Grid.Row="6"
+                VerticalAlignment="Top"
+                Header="{x:Static localizations:StringResources.SoftwareLicenses}">
+
+                <ItemsControl
+                    ItemsSource="{Binding Licenses}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate
+                            DataType="local:LicenseViewModel">
+
+                            <GroupBox
                                 Margin="0 8 0 0">
 
-                                <TextBlock>
-                                    <Hyperlink
-                                        NavigateUri="{Binding Link, Mode=OneTime}"
-                                        RequestNavigate="BrowserHyperlink_OnRequestNavigate">
-                                        <Run Text="{Binding Link, Mode=OneTime}" />
-                                    </Hyperlink>
-                                </TextBlock>
+                                <Expander
+                                    x:Name="Expander"
+                                    Header="{Binding Library, Mode=OneTime}">
 
-                                <TextBox
-                                    Margin="0 8 0 0"
-                                    IsReadOnly="True"
-                                    TextWrapping="Wrap"
-                                    Text="{Binding Text, Mode=OneTime}" />
-                            </StackPanel>
-                        </Expander>
-                    </GroupBox>
-                </DataTemplate>
-            </GroupBox.Resources>
+                                    <StackPanel
+                                        Margin="0 8 0 0">
 
-            <ScrollViewer
-                VerticalScrollBarVisibility="Auto"
-                attachedProperties:ScrollViewerConfigurator.DisableChildrenScroll="True">
-                <ItemsControl
-                    ItemsSource="{Binding Licenses}"
-                    ItemTemplate="{StaticResource LicenseTemplate}" />
-            </ScrollViewer>
-        </GroupBox>
-    </Grid>
+                                        <TextBlock>
+                                            <Hyperlink
+                                                NavigateUri="{Binding Link, Mode=OneTime}"
+                                                RequestNavigate="BrowserHyperlink_OnRequestNavigate">
+                                                <Run Text="{Binding Link, Mode=OneTime}" />
+                                            </Hyperlink>
+                                        </TextBlock>
+
+                                        <!-- TextWrapping does not work without MaxWidth binding. Why so don't know ¯\_(ツ)_/¯ -->
+                                        <TextBox
+                                            MaxWidth="{Binding ActualWidth, ElementName=Expander, Mode=OneWay}"
+                                            Margin="0 8 0 0"
+                                            IsReadOnly="True"
+                                            TextWrapping="Wrap"
+                                            Text="{Binding Text, Mode=OneTime}" />
+                                    </StackPanel>
+                                </Expander>
+                            </GroupBox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
