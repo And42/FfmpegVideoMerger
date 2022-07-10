@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Input;
+using FfmpegVideoMerger.Logic;
 
 namespace FfmpegVideoMerger.UI.Main; 
 
@@ -17,5 +20,10 @@ public partial class MainWindow {
         InitializeComponent();
 
         ActiveInstance = this;
+    }
+
+    private void PageTab_OnMouseUp(object sender, MouseButtonEventArgs e) {
+        var page = sender.As<FrameworkElement>().DataContext.As<PageViewModel>().Page;
+        ViewModel.GoToPage(page);
     }
 }

@@ -1,35 +1,37 @@
-<Page x:Class="FfmpegVideoMerger.UI.Main.Settings.SettingsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:FfmpegVideoMerger.UI.Main.Settings"
-      xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
-      mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance local:SettingsViewModel}">
+<UserControl
+    x:Class="FfmpegVideoMerger.UI.Main.Settings.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FfmpegVideoMerger.UI.Main.Settings"
+    xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:SettingsViewModel}">
+
     <Grid
         VerticalAlignment="Center"
         HorizontalAlignment="Center">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="150"/>
-            <ColumnDefinition Width="8"/>
-            <ColumnDefinition Width="Auto" MinWidth="150"/>
+            <ColumnDefinition Width="Auto" MinWidth="150" />
+            <ColumnDefinition Width="8" />
+            <ColumnDefinition Width="Auto" MinWidth="150" />
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
             VerticalAlignment="Center"
-            Text="{x:Static localizations:StringResources.Language}"/>
-        
+            Text="{x:Static localizations:StringResources.Language}" />
+
         <ComboBox
             Grid.Row="0"
             Grid.Column="2"
             ItemsSource="{Binding Languages}"
-            SelectedIndex="{Binding CurrentLanguageIndex, Mode=TwoWay}"/>
+            SelectedIndex="{Binding CurrentLanguageIndex, Mode=TwoWay}" />
     </Grid>
-</Page>
+</UserControl>

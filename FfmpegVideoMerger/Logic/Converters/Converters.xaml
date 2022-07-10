@@ -1,0 +1,6 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:FfmpegVideoMerger.Logic.Converters">
+    <converters:IfTrueReturnAccentBrush x:Key="IfTrueReturnParameter" />
+    <converters:CommandParameterEqualsConverter x:Key="CommandParameterEqualsConverter"/>
+</ResourceDictionary>

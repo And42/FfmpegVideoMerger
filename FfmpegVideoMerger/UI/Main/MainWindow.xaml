@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
     xmlns:main="clr-namespace:FfmpegVideoMerger.UI.Main"
+    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
     mc:Ignorable="d"
     Title="{x:Static localizations:StringResources.AppName}"
     MinHeight="400"
@@ -13,29 +14,55 @@
     WindowStartupLocation="CenterScreen"
     d:DataContext="{d:DesignInstance main:MainViewModel}">
 
-    <TabControl>
-        <TabItem
-            Header="{x:Static localizations:StringResources.SingleFile}">
-            
-            <Frame Source="SingleFile/SingleFilePage.xaml"/>
-        </TabItem>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="150" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-        <TabItem
-            Header="{x:Static localizations:StringResources.MultipleFiles}">
+        <GroupBox
+            Grid.Column="0"
+            Padding="0">
 
-            <Frame Source="MultipleFiles/MultipleFilesPage.xaml"/>
-        </TabItem>
-        
-        <TabItem
-            Header="{x:Static localizations:StringResources.Settings}">
+            <ItemsControl
+                ItemsSource="{Binding Pages, Mode=OneTime}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DataTemplate.Resources>
+                            <Style
+                                TargetType="TextBlock"
+                                BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsSelected, Mode=OneWay}"
+                                        Value="True">
+                                        <DataTrigger.Setters>
+                                            <Setter
+                                                Property="Background"
+                                                Value="{DynamicResource {x:Static adonisUi:Brushes.AccentBrush}}" />
 
-            <Frame Source="Settings/SettingsPage.xaml"/>
-        </TabItem>
-        
-        <TabItem
-            Header="{x:Static localizations:StringResources.AboutProgram}">
+                                            <Setter
+                                                Property="Foreground"
+                                                Value="{DynamicResource {x:Static adonisUi:Brushes.AccentForegroundBrush}}" />
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataTemplate.Resources>
 
-            <Frame Source="AboutProgram/AboutProgramPage.xaml"/>
-        </TabItem>
-    </TabControl>
+                        <TextBlock
+                            Padding="16 12"
+                            Text="{Binding Title, Mode=OneTime}"
+                            MouseUp="PageTab_OnMouseUp">
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
+
+        <ContentControl
+            Grid.Column="1"
+            Margin="32"
+            Content="{Binding CurrentPageContent, Mode=OneWay}" />
+    </Grid>
 </Window>
