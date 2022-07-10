@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Input;
 
 namespace FfmpegVideoMerger.UI.Main.Settings; 
 
@@ -13,5 +14,9 @@ public partial class SettingsPage {
         ViewModel = new SettingsViewModel();
         
         InitializeComponent();
+    }
+
+    private void ColorScheme_OnMouseUp(object sender, MouseButtonEventArgs e) {
+        ViewModel.IsDark = !ViewModel.IsDark;
     }
 }

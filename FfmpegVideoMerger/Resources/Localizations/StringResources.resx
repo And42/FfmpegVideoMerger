@@ -213,4 +213,13 @@
   <data name="AppName" xml:space="preserve">
     <value>FfmpegVideoMerger</value>
   </data>
+  <data name="ColorScheme" xml:space="preserve">
+    <value>Color Scheme:</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<Window
+﻿<adonisControls:AdonisWindow
     x:Class="FfmpegVideoMerger.UI.Main.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,6 +7,7 @@
     xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
     xmlns:main="clr-namespace:FfmpegVideoMerger.UI.Main"
     xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+    xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
     mc:Ignorable="d"
     Title="{x:Static localizations:StringResources.AppName}"
     MinHeight="400"
@@ -65,4 +66,4 @@
             Margin="32"
             Content="{Binding CurrentPageContent, Mode=OneWay}" />
     </Grid>
-</Window>
+</adonisControls:AdonisWindow>

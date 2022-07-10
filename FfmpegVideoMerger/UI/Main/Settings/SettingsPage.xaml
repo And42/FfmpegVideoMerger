@@ -6,15 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FfmpegVideoMerger.UI.Main.Settings"
     xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
+    xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance local:SettingsViewModel}">
 
-    <Grid
-        VerticalAlignment="Center"
-        HorizontalAlignment="Center">
-
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="150" />
@@ -25,11 +25,35 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
+            Text="{x:Static localizations:StringResources.ColorScheme}"/>
+        
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="2"
+            Orientation="Horizontal"
+            MouseUp="ColorScheme_OnMouseUp">
+            
+            <TextBlock
+                Text="{x:Static localizations:StringResources.Light}"/>
+            
+            <ToggleButton
+                Margin="8 0 0 0"
+                Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
+                IsChecked="{Binding IsDark, Mode=TwoWay}"/>
+            
+            <TextBlock
+                Margin="8 0 0 0"
+                Text="{x:Static localizations:StringResources.Dark}"/>
+        </StackPanel>
+        
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
             VerticalAlignment="Center"
             Text="{x:Static localizations:StringResources.Language}" />
 
         <ComboBox
-            Grid.Row="0"
+            Grid.Row="2"
             Grid.Column="2"
             ItemsSource="{Binding Languages}"
             SelectedIndex="{Binding CurrentLanguageIndex, Mode=TwoWay}" />

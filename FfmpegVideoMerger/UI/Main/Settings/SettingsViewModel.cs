@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Globalization;
+using System.Windows;
+using AdonisUI;
 using FfmpegVideoMerger.UI.Base;
 
 namespace FfmpegVideoMerger.UI.Main.Settings; 
@@ -13,6 +15,12 @@ public class SettingsViewModel : ViewModel {
         set => SetProperty(ref _currentLanguageIndexIndex, value);
     }
     private int _currentLanguageIndexIndex;
+
+    public bool IsDark {
+        get => _isDark;
+        set => SetProperty(ref _isDark, value);
+    }
+    private bool _isDark;
 
     public SettingsViewModel() {
         Languages = new[] {
@@ -42,6 +50,10 @@ public class SettingsViewModel : ViewModel {
                 var activeWindow = MainWindow.ActiveInstance;
                 new MainWindow().Show();
                 activeWindow?.Close();
+                break;
+            case nameof(IsDark):
+                var colorScheme = IsDark ? ResourceLocator.DarkColorScheme : ResourceLocator.LightColorScheme;
+                ResourceLocator.SetColorScheme(Application.Current.Resources, colorScheme);
                 break;
         }
     }
