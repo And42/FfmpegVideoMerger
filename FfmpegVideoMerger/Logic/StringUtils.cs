@@ -18,6 +18,10 @@ public static class StringUtils {
         return !self.IsEmpty();
     }
 
+    public static string Format(this string self, object? arg0) {
+        return string.Format(self, arg0);
+    }
+    
     public static string Format(this string self, object? arg0, object? arg1) {
         return string.Format(self, arg0, arg1);
     }

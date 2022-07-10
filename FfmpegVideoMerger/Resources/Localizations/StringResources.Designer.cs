@@ -61,6 +61,24 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About program.
+        /// </summary>
+        public static string AboutProgram {
+            get {
+                return ResourceManager.GetString("AboutProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FfmpegVideoMerger.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Audio file:.
         /// </summary>
         public static string AudioFile {
@@ -106,6 +124,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data Directory:.
+        /// </summary>
+        public static string DataDirectory {
+            get {
+                return ResourceManager.GetString("DataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Drop audio files here (or click).
         /// </summary>
         public static string DropAudioFilesHere {
@@ -138,6 +165,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         public static string Example {
             get {
                 return ResourceManager.GetString("Example", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executable Directory:.
+        /// </summary>
+        public static string ExecutableDirectory {
+            get {
+                return ResourceManager.GetString("ExecutableDirectory", resourceCulture);
             }
         }
         
@@ -237,6 +273,42 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         public static string SingleFile {
             get {
                 return ResourceManager.GetString("SingleFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software licenses.
+        /// </summary>
+        public static string SoftwareLicenses {
+            get {
+                return ResourceManager.GetString("SoftwareLicenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source Code:.
+        /// </summary>
+        public static string SourceCode {
+            get {
+                return ResourceManager.GetString("SourceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to open directory. Error: &quot;{0}&quot;.
+        /// </summary>
+        public static string UnableToOpenDirectory {
+            get {
+                return ResourceManager.GetString("UnableToOpenDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to open link. Error: &quot;{0}&quot;.
+        /// </summary>
+        public static string UnableToOpenLink {
+            get {
+                return ResourceManager.GetString("UnableToOpenLink", resourceCulture);
             }
         }
         

@@ -39,6 +39,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Remove="Resources\Licenses.json" />
+    <EmbeddedResource Include="Resources\Licenses.json" />
   </ItemGroup>
 
   <ItemGroup>

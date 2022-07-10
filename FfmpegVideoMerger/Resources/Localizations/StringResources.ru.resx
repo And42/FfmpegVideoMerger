@@ -90,4 +90,7 @@
     <data name="Language" xml:space="preserve">
         <value>Язык:</value>
     </data>
+    <data name="AppName" xml:space="preserve">
+        <value>FfmpegVideoMerger</value>
+    </data>
 </root>

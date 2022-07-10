@@ -7,7 +7,7 @@
     xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
     xmlns:main="clr-namespace:FfmpegVideoMerger.UI.Main"
     mc:Ignorable="d"
-    Title="MainWindow"
+    Title="{x:Static localizations:StringResources.AppName}"
     MinHeight="400"
     MinWidth="500"
     WindowStartupLocation="CenterScreen"
@@ -30,6 +30,12 @@
             Header="{x:Static localizations:StringResources.Settings}">
 
             <Frame Source="Settings/SettingsPage.xaml"/>
+        </TabItem>
+        
+        <TabItem
+            Header="{x:Static localizations:StringResources.AboutProgram}">
+
+            <Frame Source="AboutProgram/AboutProgramPage.xaml"/>
         </TabItem>
     </TabControl>
 </Window>

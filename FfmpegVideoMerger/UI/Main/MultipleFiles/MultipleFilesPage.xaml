@@ -7,8 +7,7 @@
     xmlns:local="clr-namespace:FfmpegVideoMerger.UI.Main.MultipleFiles"
     xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance local:MultipleFilesViewModel}"
-    Title="MultipleFilesPage">
+    d:DataContext="{d:DesignInstance local:MultipleFilesViewModel}">
 
     <Grid>
         <Grid.Resources>

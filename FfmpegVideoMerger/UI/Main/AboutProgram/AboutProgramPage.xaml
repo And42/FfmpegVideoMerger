@@ -1,0 +1,97 @@
+<Page x:Class="FfmpegVideoMerger.UI.Main.AboutProgram.AboutProgramPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:FfmpegVideoMerger.UI.Main.AboutProgram"
+      xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
+      xmlns:attachedProperties="clr-namespace:FfmpegVideoMerger.Logic.AttachedProperties"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance local:AboutProgramViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0">
+            <Run Text="{x:Static localizations:StringResources.SourceCode}"/>
+                
+            <Hyperlink
+                NavigateUri="https://github.com/And42/FfmpegVideoMerger"
+                RequestNavigate="BrowserHyperlink_OnRequestNavigate">
+                <Run Text="https://github.com/And42/FfmpegVideoMerger"/>
+            </Hyperlink>
+        </TextBlock>
+        
+        <TextBlock Grid.Row="2">
+            <Run Text="{x:Static localizations:StringResources.ExecutableDirectory}"/>
+                
+            <Hyperlink
+                NavigateUri="{Binding ExecutablePath, Mode=OneTime}"
+                RequestNavigate="DirectoryHyperlink_OnRequestNavigate">
+                <Run Text="{Binding ExecutablePath, Mode=OneTime}"/>
+            </Hyperlink>
+        </TextBlock>
+        
+        <TextBlock Grid.Row="4">
+            <Run Text="{x:Static localizations:StringResources.DataDirectory}"/>
+                
+            <Hyperlink
+                NavigateUri="{Binding DataPath, Mode=OneTime}"
+                RequestNavigate="DirectoryHyperlink_OnRequestNavigate">
+                <Run Text="{Binding DataPath, Mode=OneTime}"/>
+            </Hyperlink>
+        </TextBlock>
+        
+        <GroupBox
+            Grid.Row="6"
+            Header="{x:Static localizations:StringResources.SoftwareLicenses}">
+            <GroupBox.Resources>
+                <DataTemplate
+                    x:Key="LicenseTemplate"
+                    DataType="local:LicenseViewModel">
+                        
+                    <GroupBox
+                        Margin="0 8 0 0">
+
+                        <Expander
+                            Header="{Binding Library, Mode=OneTime}">
+                            
+                            <StackPanel
+                                Margin="0 8 0 0">
+
+                                <TextBlock>
+                                    <Hyperlink
+                                        NavigateUri="{Binding Link, Mode=OneTime}"
+                                        RequestNavigate="BrowserHyperlink_OnRequestNavigate">
+                                        <Run Text="{Binding Link, Mode=OneTime}"/>
+                                    </Hyperlink>
+                                </TextBlock>
+                                
+                                <TextBox
+                                    Margin="0 8 0 0"
+                                    IsReadOnly="True"
+                                    TextWrapping="Wrap"
+                                    Text="{Binding Text, Mode=OneTime}"/>
+                            </StackPanel>
+                        </Expander>
+                    </GroupBox>
+                </DataTemplate>
+            </GroupBox.Resources>
+            
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto"
+                attachedProperties:ScrollViewerConfigurator.DisableChildrenScroll="True">
+                <ItemsControl
+                    ItemsSource="{Binding Licenses}"
+                    ItemTemplate="{StaticResource LicenseTemplate}"/>
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</Page>

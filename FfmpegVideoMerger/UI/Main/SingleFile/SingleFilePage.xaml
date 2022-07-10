@@ -6,7 +6,6 @@
       xmlns:localizations="clr-namespace:FfmpegVideoMerger.Resources.Localizations"
       xmlns:singleFile="clr-namespace:FfmpegVideoMerger.UI.Main.SingleFile"
       mc:Ignorable="d"
-      Title="SingleFilePage"
       d:DataContext="{d:DesignInstance singleFile:SingleFileViewModel}">
     <Grid>
         <Grid.RowDefinitions>

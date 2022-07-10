@@ -189,4 +189,28 @@
   <data name="Language" xml:space="preserve">
     <value>Language:</value>
   </data>
+  <data name="AboutProgram" xml:space="preserve">
+    <value>About program</value>
+  </data>
+  <data name="SoftwareLicenses" xml:space="preserve">
+    <value>Software licenses</value>
+  </data>
+  <data name="UnableToOpenLink" xml:space="preserve">
+    <value>Unable to open link. Error: "{0}"</value>
+  </data>
+  <data name="UnableToOpenDirectory" xml:space="preserve">
+    <value>Unable to open directory. Error: "{0}"</value>
+  </data>
+  <data name="SourceCode" xml:space="preserve">
+    <value>Source Code:</value>
+  </data>
+  <data name="ExecutableDirectory" xml:space="preserve">
+    <value>Executable Directory:</value>
+  </data>
+  <data name="DataDirectory" xml:space="preserve">
+    <value>Data Directory:</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>FfmpegVideoMerger</value>
+  </data>
 </root>
