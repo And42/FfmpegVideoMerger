@@ -1,17 +1,16 @@
 ﻿using System.Windows;
-using AdonisUI;
+using FfmpegVideoMerger.Logic;
+using FfmpegVideoMerger.Logic.Language;
+using FfmpegVideoMerger.Logic.Settings;
 
-namespace FfmpegVideoMerger
-{
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
-        protected override void OnStartup(StartupEventArgs e) {
-            base.OnStartup(e);
-            
-            ResourceLocator.SetColorScheme(Current.Resources, ResourceLocator.LightColorScheme);
-        }
+namespace FfmpegVideoMerger; 
+
+public partial class App {
+    protected override void OnStartup(StartupEventArgs e) {
+        base.OnStartup(e);
+
+        var settings = SettingsProvider.LoadSettings();
+        ThemeUtils.SetTheme(settings.AppTheme);
+        LanguageUtils.SetLanguage(settings.AppLanguage);
     }
 }

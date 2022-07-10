@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using FfmpegVideoMerger.Logic;
+using FfmpegVideoMerger.Logic.Storage;
 using FfmpegVideoMerger.UI.Base;
 
 namespace FfmpegVideoMerger.UI.Main.AboutProgram; 
@@ -12,12 +13,13 @@ namespace FfmpegVideoMerger.UI.Main.AboutProgram;
 public class AboutProgramViewModel : ViewModel {
     
     public string ExecutablePath { get; }
-    public string DataPath { get; } = string.Empty;
+    public string DataPath { get; }
     public IReadOnlyList<LicenseViewModel> Licenses { get; }
 
     public AboutProgramViewModel() {
         Licenses = ParseLicenses();
         ExecutablePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
+        DataPath = StoragePathsProvider.GetDataPath();
     }
 
     private static List<LicenseViewModel> ParseLicenses() {

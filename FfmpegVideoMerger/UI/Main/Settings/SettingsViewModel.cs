@@ -1,12 +1,21 @@
+using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Windows;
-using AdonisUI;
+using FfmpegVideoMerger.Logic;
+using FfmpegVideoMerger.Logic.Language;
+using FfmpegVideoMerger.Logic.Settings;
 using FfmpegVideoMerger.UI.Base;
 
 namespace FfmpegVideoMerger.UI.Main.Settings; 
 
 public class SettingsViewModel : ViewModel {
+
+    private readonly AppSettings _appSettings;
+    
+    public bool IsDark {
+        get => _isDark;
+        set => SetProperty(ref _isDark, value);
+    }
+    private bool _isDark;
 
     public IReadOnlyList<string> Languages { get; }
 
@@ -16,21 +25,20 @@ public class SettingsViewModel : ViewModel {
     }
     private int _currentLanguageIndexIndex;
 
-    public bool IsDark {
-        get => _isDark;
-        set => SetProperty(ref _isDark, value);
-    }
-    private bool _isDark;
-
     public SettingsViewModel() {
+        _appSettings = SettingsProvider.LoadSettings();
+
+        _isDark = _appSettings.AppTheme == AppSettings.Theme.Dark;
+
         Languages = new[] {
             "English",
             "Русский"
         };
 
-        _currentLanguageIndexIndex = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName switch {
-            "ru" => 1,
-            _ => 0
+        _currentLanguageIndexIndex = _appSettings.AppLanguage switch {
+            AppSettings.Language.English => 0,
+            AppSettings.Language.Russian => 1,
+            _ => throw new ArgumentOutOfRangeException(nameof(_appSettings.AppLanguage), _appSettings.AppLanguage, null)
         };
     }
 
@@ -39,21 +47,22 @@ public class SettingsViewModel : ViewModel {
 
         switch (propertyName) {
             case nameof(CurrentLanguageIndex):
-                string language = CurrentLanguageIndex switch {
-                    1 => "ru",
-                    _ => "en"
+                var language = CurrentLanguageIndex switch {
+                    1 => AppSettings.Language.Russian,
+                    _ => AppSettings.Language.English
                 };
 
-                var cultureInfo = CultureInfo.GetCultureInfo(language);
-                CultureInfo.CurrentCulture = cultureInfo;
-                CultureInfo.CurrentUICulture = cultureInfo;
+                _appSettings.AppLanguage = language;
+                LanguageUtils.SetLanguage(language);
                 var activeWindow = MainWindow.ActiveInstance;
-                new MainWindow().Show();
+                var newWindow = new MainWindow();
+                newWindow.Show();
+                newWindow.ViewModel.GoToPage(MainViewModel.Page.Settings);
                 activeWindow?.Close();
                 break;
             case nameof(IsDark):
-                var colorScheme = IsDark ? ResourceLocator.DarkColorScheme : ResourceLocator.LightColorScheme;
-                ResourceLocator.SetColorScheme(Application.Current.Resources, colorScheme);
+                _appSettings.AppTheme = IsDark ? AppSettings.Theme.Dark : AppSettings.Theme.Light;
+                ThemeUtils.SetTheme(_appSettings.AppTheme);
                 break;
         }
     }
