@@ -11,6 +11,7 @@ using FfmpegVideoMerger.Logic;
 using FfmpegVideoMerger.Resources.Localizations;
 using FfmpegVideoMerger.UI.Base;
 using MessageBox = AdonisUI.Controls.MessageBox;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace FfmpegVideoMerger.UI.Main.MultipleFiles; 
 
@@ -78,7 +79,7 @@ public class MultipleFilesViewModel : ViewModel {
     
     public double Progress {
         get => _progress;
-        set => SetProperty(ref _progress, value);
+        private set => SetProperty(ref _progress, value);
     }
     private double _progress;
 
@@ -118,7 +119,7 @@ public class MultipleFilesViewModel : ViewModel {
         var openDialog = new OpenFileDialog {
             Multiselect = true
         };
-        if (openDialog.ShowDialog() != DialogResult.OK) {
+        if (openDialog.ShowDialog() != true) {
             return;
         }
         
@@ -129,7 +130,7 @@ public class MultipleFilesViewModel : ViewModel {
         var openDialog = new OpenFileDialog {
             Multiselect = true
         };
-        if (openDialog.ShowDialog() != DialogResult.OK) {
+        if (openDialog.ShowDialog() != true) {
             return;
         }
         
