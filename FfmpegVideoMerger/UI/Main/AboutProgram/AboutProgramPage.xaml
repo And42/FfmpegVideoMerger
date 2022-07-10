@@ -79,8 +79,12 @@
                                 Margin="0 8 0 0">
 
                                 <Expander
-                                    x:Name="Expander"
-                                    Header="{Binding Library, Mode=OneTime}">
+                                    x:Name="Expander">
+                                    <Expander.Header>
+                                        <TextBlock
+                                            Margin="4 0 0 0"
+                                            Text="{Binding Library, Mode=OneTime}"/>
+                                    </Expander.Header>
 
                                     <StackPanel
                                         Margin="0 8 0 0">
