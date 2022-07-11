@@ -160,6 +160,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Загрузить.
+        /// </summary>
+        internal static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Перетащите файлы аудио сюда (или нажмите).
         /// </summary>
         internal static string DropAudioFilesHere {

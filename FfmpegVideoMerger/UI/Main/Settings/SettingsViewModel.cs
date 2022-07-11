@@ -39,6 +39,7 @@ public class SettingsViewModel : ViewModel {
     private string _ffmpegPath;
     
     public ActionCommand ChooseFfmpegPathCommand { get; }
+    public ActionCommand OpenFfmpegSiteCommand { get; }
 
     public SettingsViewModel() {
         _appSettings = SettingsProvider.LoadSettings();
@@ -60,6 +61,7 @@ public class SettingsViewModel : ViewModel {
         _ffmpegPath = _appSettings.FfmpegPath;
 
         ChooseFfmpegPathCommand = new ActionCommand(ChooseFfmpegPathCommandExecute, canExecute: () => true);
+        OpenFfmpegSiteCommand = new ActionCommand(OpenFfmpegSiteCommandExecute, canExecute: () => true);
     }
 
     private void ChooseFfmpegPathCommandExecute() {
@@ -71,6 +73,10 @@ public class SettingsViewModel : ViewModel {
         }
 
         FfmpegPath = openDialog.FileName;
+    }
+
+    private void OpenFfmpegSiteCommandExecute() {
+        ProcessUtils.OpenLinkInBrowser("https://ffmpeg.org/download.html");
     }
 
     protected override void OnPropertyChanged(string? propertyName = null) {

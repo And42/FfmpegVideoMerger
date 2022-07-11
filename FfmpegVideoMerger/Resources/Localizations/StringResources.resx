@@ -244,4 +244,7 @@ Do you want to go to the web site to install it?</value>
   <data name="FfmpegNotFound" xml:space="preserve">
     <value>Ffmpeg not found on path "{0}"</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
 </root>

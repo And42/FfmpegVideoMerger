@@ -145,4 +145,7 @@
     <data name="FfmpegNotFound" xml:space="preserve">
         <value>Ffmpeg не найден по пути "{0}"</value>
     </data>
+    <data name="Download" xml:space="preserve">
+        <value>Загрузить</value>
+    </data>
 </root>
