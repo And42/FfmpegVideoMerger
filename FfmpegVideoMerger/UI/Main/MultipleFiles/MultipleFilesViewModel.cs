@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -201,11 +202,7 @@ public class MultipleFilesViewModel : ViewModel {
         }
         
         string ffmpegPath = SettingsProvider.LoadSettings().FfmpegPath;
-        if (!File.Exists(ffmpegPath)) {
-            MessageBoxUtils.ShowError(StringResources.FfmpegNotFound.Format(ffmpegPath));
-            return;
-        }
-        
+
         try {
             FfmpegOutput = string.Empty;
             _activeProcessCancellation = new CancellationTokenSource();
@@ -218,7 +215,7 @@ public class MultipleFilesViewModel : ViewModel {
                     audioPath: fileToProcess.AudioPath,
                     outputPath: Path.Combine(OutputDirectoryPath, fileToProcess.OutputName)
                 );
-                
+
                 await CommandExecutor.Execute(
                     ffmpegPath,
                     ffmpegCommand,
@@ -229,7 +226,9 @@ public class MultipleFilesViewModel : ViewModel {
                 Progress = (double)(index + 1) / filesToProcess.Count;
             }
         } catch (TaskCanceledException) {
-        } finally {
+        } catch (Win32Exception) {
+            MessageBoxUtils.ShowError(StringResources.FfmpegNotFound.Format(ffmpegPath));
+        }finally {
             _activeProcessCancellation = null;
             OnPropertyChanged(nameof(IsProcessing));
         }
