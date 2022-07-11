@@ -63,47 +63,8 @@
             </Style>
         </Grid.Resources>
 
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="0"
-            Text="{x:Static localizations:StringResources.ColorScheme}"/>
-        
         <StackPanel
             Grid.Row="0"
-            Grid.Column="2"
-            Grid.ColumnSpan="5"
-            Orientation="Horizontal"
-            MouseUp="ColorScheme_OnMouseUp">
-            
-            <TextBlock
-                Text="{x:Static localizations:StringResources.Light}"/>
-            
-            <ToggleButton
-                Margin="8 0 0 0"
-                VerticalAlignment="Center"
-                Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
-                IsChecked="{Binding IsDark, Mode=TwoWay}"/>
-            
-            <TextBlock
-                Margin="8 0 0 0"
-                Text="{x:Static localizations:StringResources.Dark}"/>
-        </StackPanel>
-        
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="0"
-            VerticalAlignment="Center"
-            Text="{x:Static localizations:StringResources.Language}" />
-
-        <ComboBox
-            Grid.Row="2"
-            Grid.Column="2"
-            Grid.ColumnSpan="5"
-            ItemsSource="{Binding Languages}"
-            SelectedIndex="{Binding CurrentLanguageIndex, Mode=TwoWay}" />
-        
-        <StackPanel
-            Grid.Row="4"
             Grid.Column="0"
             Grid.ColumnSpan="7"
             Orientation="Horizontal"
@@ -119,6 +80,44 @@
                 Text="{x:Static localizations:StringResources.CheckForUpdates}"/>
             
         </StackPanel>
+        
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="{x:Static localizations:StringResources.ColorScheme}"/>
+        
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="5"
+            Orientation="Horizontal"
+            MouseUp="ColorScheme_OnMouseUp">
+            
+            <TextBlock
+                Text="{x:Static localizations:StringResources.Light}"/>
+            
+            <ToggleButton
+                Margin="8 0 0 0"
+                VerticalAlignment="Center"
+                Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
+                IsChecked="{Binding IsDark, Mode=TwoWay}"/>
+            
+            <TextBlock
+                Text="{x:Static localizations:StringResources.Dark}"/>
+        </StackPanel>
+        
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="0"
+            VerticalAlignment="Center"
+            Text="{x:Static localizations:StringResources.Language}" />
+
+        <ComboBox
+            Grid.Row="4"
+            Grid.Column="2"
+            Grid.ColumnSpan="5"
+            ItemsSource="{Binding Languages}"
+            SelectedIndex="{Binding CurrentLanguageIndex, Mode=TwoWay}" />
         
         <TextBlock
             Grid.Row="6"
