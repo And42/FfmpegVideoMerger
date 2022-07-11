@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace FfmpegVideoMerger.Logic.Settings; 
 
@@ -63,24 +65,23 @@ public class AppSettings {
             return;
         }
 
-        var document = File.OpenRead(_filePath).Use(it => JsonDocument.Parse(it));
-        _appTheme = document.RootElement.GetProperty(SettingsJson.ThemeKey).GetString() switch {
-            SettingsJson.ThemeLightValue => Theme.Light,
-            SettingsJson.ThemeDarkValue => Theme.Dark,
+        var settingsJson = File.OpenRead(_filePath).Use(it => JsonSerializer.Deserialize<SettingsJson>(it));
+        if (settingsJson == null) {
+            return;
+        }
+        
+        _appTheme = settingsJson.Theme switch {
+            SettingsJsonValues.ThemeLight => Theme.Light,
+            SettingsJsonValues.ThemeDark => Theme.Dark,
             _ => Theme.Light
         };
-        _appLanguage = document.RootElement.GetProperty(SettingsJson.LanguageKey).GetString() switch {
-            SettingsJson.LanguageEnglishValue => Language.English,
-            SettingsJson.LanguageRussianValue => Language.Russian,
+        _appLanguage = settingsJson.Language switch {
+            SettingsJsonValues.LanguageEnglish => Language.English,
+            SettingsJsonValues.LanguageRussian => Language.Russian,
             _ => Language.English
         };
-        // ReSharper disable once SimplifyConditionalTernaryExpression
-        _checkForUpdates = document.RootElement.TryGetProperty(SettingsJson.CheckForUpdatesKey, out JsonElement value)
-            ? value.GetBoolean()
-            : true;
-        _ffmpegPath = document.RootElement.TryGetProperty(SettingsJson.FfmpegPathKey, out JsonElement ffmpegPath)
-            ? ffmpegPath.GetString() ?? "ffmpeg"
-            : "ffmpeg";
+        _checkForUpdates = settingsJson.CheckForUpdates ?? true;
+        _ffmpegPath = settingsJson.FfmpegPath ?? "ffmpeg";
     }
 
     private void Save() {
@@ -89,39 +90,48 @@ public class AppSettings {
             Directory.CreateDirectory(parentDirectory!);
         }
 
-        var jsonOptions = new JsonWriterOptions {
-            Indented = true
+        var jsonOptions = new JsonSerializerOptions {
+            WriteIndented = true
         };
 
-        using (var output = File.Create(_filePath))
-        using (var writer = new Utf8JsonWriter(output, jsonOptions)) {
-            writer.WriteStartObject();
-            
-            writer.WriteString(SettingsJson.ThemeKey, AppTheme switch {
-                Theme.Light => SettingsJson.ThemeLightValue,
-                Theme.Dark => SettingsJson.ThemeDarkValue,
+        var settingsJson = new SettingsJson {
+            Theme = AppTheme switch {
+                Theme.Light => SettingsJsonValues.ThemeLight,
+                Theme.Dark => SettingsJsonValues.ThemeDark,
                 _ => throw new ArgumentException(nameof(AppTheme))
-            });
-            writer.WriteString(SettingsJson.LanguageKey, AppLanguage switch {
-                Language.English => SettingsJson.LanguageEnglishValue,
-                Language.Russian => SettingsJson.LanguageRussianValue,
+            },
+            Language = AppLanguage switch {
+                Language.English => SettingsJsonValues.LanguageEnglish,
+                Language.Russian => SettingsJsonValues.LanguageRussian,
                 _ => throw new ArgumentException(nameof(AppLanguage))
-            });
-            writer.WriteBoolean(SettingsJson.CheckForUpdatesKey, CheckForUpdates);
-            writer.WriteString(SettingsJson.FfmpegPathKey, FfmpegPath);
-            
-            writer.WriteEndObject();
-        }
+            },
+            CheckForUpdates = CheckForUpdates,
+            FfmpegPath = FfmpegPath
+        };
+
+        File.Create(_filePath).Use(it => JsonSerializer.Serialize(it, settingsJson, jsonOptions));
     }
 
-    private static class SettingsJson {
-        public const string ThemeKey = "theme";
-        public const string ThemeLightValue = "light";
-        public const string ThemeDarkValue = "dark";
-        public const string LanguageKey = "language";
-        public const string LanguageEnglishValue = "en";
-        public const string LanguageRussianValue = "ru";
-        public const string CheckForUpdatesKey = "check_for_updates";
-        public const string FfmpegPathKey = "ffmpeg_path";
+    [SuppressMessage("ReSharper", "MemberHidesStaticFromOuterClass")]
+    private class SettingsJson {
+
+        [JsonPropertyName("theme")]
+        public string? Theme { get; init; }
+        
+        [JsonPropertyName("language")]
+        public string? Language { get; init; }
+        
+        [JsonPropertyName("check_for_updates")]
+        public bool? CheckForUpdates { get; init; }
+        
+        [JsonPropertyName("ffmpeg_path")]
+        public string? FfmpegPath { get; init; }
+    }
+    
+    private static class SettingsJsonValues {
+        public const string ThemeLight = "light";
+        public const string ThemeDark = "dark";
+        public const string LanguageEnglish = "en";
+        public const string LanguageRussian = "ru";
     }
 }
