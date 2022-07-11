@@ -36,6 +36,12 @@ public class AppSettings {
         set => SetProperty(ref _checkForUpdates, value);
     }
     private bool _checkForUpdates;
+
+    public string FfmpegPath {
+        get => _ffmpegPath;
+        set => SetProperty(ref _ffmpegPath, value);
+    }
+    private string _ffmpegPath = string.Empty;
     
     public AppSettings(string filePath) {
         _filePath = filePath;
@@ -72,6 +78,9 @@ public class AppSettings {
         _checkForUpdates = document.RootElement.TryGetProperty(SettingsJson.CheckForUpdatesKey, out JsonElement value)
             ? value.GetBoolean()
             : true;
+        _ffmpegPath = document.RootElement.TryGetProperty(SettingsJson.FfmpegPathKey, out JsonElement ffmpegPath)
+            ? ffmpegPath.GetString() ?? "ffmpeg"
+            : "ffmpeg";
     }
 
     private void Save() {
@@ -99,6 +108,7 @@ public class AppSettings {
                 _ => throw new ArgumentException(nameof(AppLanguage))
             });
             writer.WriteBoolean(SettingsJson.CheckForUpdatesKey, CheckForUpdates);
+            writer.WriteString(SettingsJson.FfmpegPathKey, FfmpegPath);
             
             writer.WriteEndObject();
         }
@@ -112,5 +122,6 @@ public class AppSettings {
         public const string LanguageEnglishValue = "en";
         public const string LanguageRussianValue = "ru";
         public const string CheckForUpdatesKey = "check_for_updates";
+        public const string FfmpegPathKey = "ffmpeg_path";
     }
 }

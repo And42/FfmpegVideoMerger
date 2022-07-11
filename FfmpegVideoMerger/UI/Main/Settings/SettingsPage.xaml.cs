@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Windows.Input;
+using FfmpegVideoMerger.Logic;
 
 namespace FfmpegVideoMerger.UI.Main.Settings; 
 
@@ -14,6 +16,11 @@ public partial class SettingsPage {
         ViewModel = new SettingsViewModel();
         
         InitializeComponent();
+        
+        FfmpegPathTextBox.EnableFileDrop(
+            fileNameValidator: file => Path.GetExtension(file) == ".exe",
+            onFilesDropped: files => ViewModel.FfmpegPath = files[0]
+        );
     }
 
     private void ColorScheme_OnMouseUp(object sender, MouseButtonEventArgs e) {

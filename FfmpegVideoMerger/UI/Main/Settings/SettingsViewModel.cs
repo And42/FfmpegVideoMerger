@@ -4,6 +4,7 @@ using FfmpegVideoMerger.Logic;
 using FfmpegVideoMerger.Logic.Language;
 using FfmpegVideoMerger.Logic.Settings;
 using FfmpegVideoMerger.UI.Base;
+using Microsoft.Win32;
 
 namespace FfmpegVideoMerger.UI.Main.Settings; 
 
@@ -31,6 +32,14 @@ public class SettingsViewModel : ViewModel {
     }
     private bool _checkForUpdates;
 
+    public string FfmpegPath {
+        get => _ffmpegPath;
+        set => SetProperty(ref _ffmpegPath, value);
+    }
+    private string _ffmpegPath;
+    
+    public ActionCommand ChooseFfmpegPathCommand { get; }
+
     public SettingsViewModel() {
         _appSettings = SettingsProvider.LoadSettings();
 
@@ -48,6 +57,20 @@ public class SettingsViewModel : ViewModel {
         };
 
         _checkForUpdates = _appSettings.CheckForUpdates;
+        _ffmpegPath = _appSettings.FfmpegPath;
+
+        ChooseFfmpegPathCommand = new ActionCommand(ChooseFfmpegPathCommandExecute, canExecute: () => true);
+    }
+
+    private void ChooseFfmpegPathCommandExecute() {
+        var openDialog = new OpenFileDialog {
+            Filter = "*.exe|*.exe"
+        };
+        if (openDialog.ShowDialog() != true) {
+            return;
+        }
+
+        FfmpegPath = openDialog.FileName;
     }
 
     protected override void OnPropertyChanged(string? propertyName = null) {
@@ -74,6 +97,9 @@ public class SettingsViewModel : ViewModel {
                 break;
             case nameof(CheckForUpdates):
                 _appSettings.CheckForUpdates = CheckForUpdates;
+                break;
+            case nameof(FfmpegPath):
+                _appSettings.FfmpegPath = FfmpegPath;
                 break;
         }
     }

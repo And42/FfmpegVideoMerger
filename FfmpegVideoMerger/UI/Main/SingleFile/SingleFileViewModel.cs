@@ -1,8 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using FfmpegVideoMerger.Logic;
+using FfmpegVideoMerger.Logic.Settings;
+using FfmpegVideoMerger.Resources.Localizations;
 using FfmpegVideoMerger.UI.Base;
 using Microsoft.Win32;
 
@@ -86,13 +89,19 @@ public class SingleFileViewModel : ViewModel {
     }
 
     private async void ProcessFileCommandExecute() {
+        string ffmpegPath = SettingsProvider.LoadSettings().FfmpegPath;
+        if (!File.Exists(ffmpegPath)) {
+            MessageBoxUtils.ShowError(StringResources.FfmpegNotFound.Format(ffmpegPath));
+            return;
+        }
+        
         try {
             FfmpegOutput = string.Empty;
             _activeProcessCancellation = new CancellationTokenSource();
             OnPropertyChanged(nameof(IsProcessing));
 
             await CommandExecutor.Execute(
-                "ffmpeg",
+                ffmpegPath,
                 FfmpegCommand,
                 data => FfmpegOutput += data + Environment.NewLine,
                 _activeProcessCancellation.Token

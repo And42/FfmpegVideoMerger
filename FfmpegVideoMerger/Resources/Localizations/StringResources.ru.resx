@@ -139,4 +139,10 @@
     <data name="Yes" xml:space="preserve">
         <value>Да</value>
     </data>
+    <data name="FfmpegPath" xml:space="preserve">
+        <value>Путь к ffmpeg.exe:</value>
+    </data>
+    <data name="FfmpegNotFound" xml:space="preserve">
+        <value>Ffmpeg не найден по пути "{0}"</value>
+    </data>
 </root>

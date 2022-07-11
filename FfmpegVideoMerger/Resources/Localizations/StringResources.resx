@@ -238,4 +238,10 @@ Do you want to go to the web site to install it?</value>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="FfmpegPath" xml:space="preserve">
+    <value>Ffmpeg.exe path:</value>
+  </data>
+  <data name="FfmpegNotFound" xml:space="preserve">
+    <value>Ffmpeg not found on path "{0}"</value>
+  </data>
 </root>

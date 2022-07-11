@@ -17,12 +17,49 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="8"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="150" />
             <ColumnDefinition Width="8" />
             <ColumnDefinition Width="Auto" MinWidth="150" />
+            <ColumnDefinition Width="8" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style
+                TargetType="TextBlock"
+                BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Style.Setters>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style.Setters>
+            </Style>
+
+            <Style
+                TargetType="TextBox"
+                BasedOn="{StaticResource {x:Type TextBox}}">
+                <Style.Setters>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style.Setters>
+            </Style>
+            
+            <Style
+                TargetType="ComboBox"
+                BasedOn="{StaticResource {x:Type ComboBox}}">
+                <Style.Setters>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style.Setters>
+            </Style>
+
+            <Style
+                TargetType="Button"
+                BasedOn="{StaticResource {x:Type Button}}">
+                <Style.Setters>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style.Setters>
+            </Style>
+        </Grid.Resources>
 
         <TextBlock
             Grid.Row="0"
@@ -32,6 +69,7 @@
         <StackPanel
             Grid.Row="0"
             Grid.Column="2"
+            Grid.ColumnSpan="3"
             Orientation="Horizontal"
             MouseUp="ColorScheme_OnMouseUp">
             
@@ -40,6 +78,7 @@
             
             <ToggleButton
                 Margin="8 0 0 0"
+                VerticalAlignment="Center"
                 Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"
                 IsChecked="{Binding IsDark, Mode=TwoWay}"/>
             
@@ -57,17 +96,19 @@
         <ComboBox
             Grid.Row="2"
             Grid.Column="2"
+            Grid.ColumnSpan="3"
             ItemsSource="{Binding Languages}"
             SelectedIndex="{Binding CurrentLanguageIndex, Mode=TwoWay}" />
         
         <StackPanel
             Grid.Row="4"
             Grid.Column="0"
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="5"
             Orientation="Horizontal"
             MouseUp="CheckForUpdates_OnMouseUp">
             
             <ToggleButton
+                VerticalAlignment="Center"
                 IsChecked="{Binding CheckForUpdates, Mode=TwoWay}"
                 Style="{DynamicResource {x:Static adonisUi:Styles.ToggleSwitch}}"/>
             
@@ -76,5 +117,22 @@
                 Text="{x:Static localizations:StringResources.CheckForUpdates}"/>
             
         </StackPanel>
+        
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="0"
+            Text="{x:Static localizations:StringResources.FfmpegPath}"/>
+        
+        <TextBox
+            x:Name="FfmpegPathTextBox"
+            Grid.Row="6"
+            Grid.Column="2"
+            Text="{Binding FfmpegPath, Mode=TwoWay}"/>
+        
+        <Button
+            Grid.Row="6"
+            Grid.Column="4"
+            Content="{x:Static localizations:StringResources.Choose}"
+            Command="{Binding ChooseFfmpegPathCommand}"/>
     </Grid>
 </UserControl>

@@ -205,6 +205,24 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ffmpeg not found on path &quot;{0}&quot;.
+        /// </summary>
+        public static string FfmpegNotFound {
+            get {
+                return ResourceManager.GetString("FfmpegNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ffmpeg.exe path:.
+        /// </summary>
+        public static string FfmpegPath {
+            get {
+                return ResourceManager.GetString("FfmpegPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string Information {

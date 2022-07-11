@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdonisUI.Controls;
 using FfmpegVideoMerger.Logic;
+using FfmpegVideoMerger.Logic.Settings;
 using FfmpegVideoMerger.Resources.Localizations;
 using FfmpegVideoMerger.UI.Base;
 using MessageBox = AdonisUI.Controls.MessageBox;
@@ -199,6 +200,12 @@ public class MultipleFilesViewModel : ViewModel {
             return;
         }
         
+        string ffmpegPath = SettingsProvider.LoadSettings().FfmpegPath;
+        if (!File.Exists(ffmpegPath)) {
+            MessageBoxUtils.ShowError(StringResources.FfmpegNotFound.Format(ffmpegPath));
+            return;
+        }
+        
         try {
             FfmpegOutput = string.Empty;
             _activeProcessCancellation = new CancellationTokenSource();
@@ -213,7 +220,7 @@ public class MultipleFilesViewModel : ViewModel {
                 );
                 
                 await CommandExecutor.Execute(
-                    "ffmpeg",
+                    ffmpegPath,
                     ffmpegCommand,
                     data => FfmpegOutput += data + Environment.NewLine,
                     _activeProcessCancellation.Token
