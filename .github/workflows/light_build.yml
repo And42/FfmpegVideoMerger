@@ -37,13 +37,13 @@ jobs:
     - name: Upload framework dependent
       uses: actions/upload-artifact@v3
       with:
-        name: net-6.0-windows-x64-framework-dependent.exe
+        name: net-6.0-windows-x64-framework-dependent
         path: FfmpegVideoMerger/bin/publish/Release/net6.0-windows-x64-framework-dependent/FfmpegVideoMerger.exe
         if-no-files-found: error
 
     - name: Upload installer for framework dependent
       uses: actions/upload-artifact@v3
       with:
-        name: net-6.0-windows-x64-framework-dependent-installer.exe
+        name: net-6.0-windows-x64-framework-dependent-installer
         path: Installer/Output/net6.0-windows-x64-framework-dependent.exe
         if-no-files-found: error
