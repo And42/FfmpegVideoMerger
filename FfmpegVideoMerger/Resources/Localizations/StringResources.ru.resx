@@ -123,4 +123,20 @@
     <data name="AboutProgram" xml:space="preserve">
         <value>О программе</value>
     </data>
+    <data name="CheckForUpdates" xml:space="preserve">
+        <value>Проверять наличие обновлений</value>
+    </data>
+    <data name="Information" xml:space="preserve">
+        <value>Информация</value>
+    </data>
+    <data name="NewVersionAvailable" xml:space="preserve">
+        <value>Доступна новая версия: {0}
+Хотите перейти на сайт для скачивания?</value>
+    </data>
+    <data name="No" xml:space="preserve">
+        <value>Нет</value>
+    </data>
+    <data name="Yes" xml:space="preserve">
+        <value>Да</value>
+    </data>
 </root>

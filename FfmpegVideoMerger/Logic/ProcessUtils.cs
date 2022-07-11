@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using AdonisUI.Controls;
 using FfmpegVideoMerger.Resources.Localizations;
 
 namespace FfmpegVideoMerger.Logic; 
@@ -15,11 +14,7 @@ public static class ProcessUtils {
         try {
             Process.Start(processInfo);
         } catch (Exception exception) {
-            MessageBox.Show(
-                caption: StringResources.Error,
-                text: StringResources.UnableToOpenLink.Format(exception.Message),
-                icon: MessageBoxImage.Warning
-            );
+            MessageBoxUtils.ShowError(StringResources.UnableToOpenLink.Format(exception.Message));
         }
     }
 
@@ -31,11 +26,7 @@ public static class ProcessUtils {
         try {
             Process.Start(processInfo);
         } catch (Exception exception) {
-            MessageBox.Show(
-                caption: StringResources.Error,
-                text: StringResources.UnableToOpenDirectory.Format(exception.Message),
-                icon: MessageBoxImage.Warning
-            );
+            MessageBoxUtils.ShowError(StringResources.UnableToOpenDirectory.Format(exception.Message));
         }
     }
 }

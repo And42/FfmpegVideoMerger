@@ -30,6 +30,12 @@ public class AppSettings {
         set => SetProperty(ref _appLanguage, value);
     }
     private Language _appLanguage;
+
+    public bool CheckForUpdates {
+        get => _checkForUpdates;
+        set => SetProperty(ref _checkForUpdates, value);
+    }
+    private bool _checkForUpdates;
     
     public AppSettings(string filePath) {
         _filePath = filePath;
@@ -62,6 +68,10 @@ public class AppSettings {
             SettingsJson.LanguageRussianValue => Language.Russian,
             _ => Language.English
         };
+        // ReSharper disable once SimplifyConditionalTernaryExpression
+        _checkForUpdates = document.RootElement.TryGetProperty(SettingsJson.CheckForUpdatesKey, out JsonElement value)
+            ? value.GetBoolean()
+            : true;
     }
 
     private void Save() {
@@ -88,6 +98,7 @@ public class AppSettings {
                 Language.Russian => SettingsJson.LanguageRussianValue,
                 _ => throw new ArgumentException(nameof(AppLanguage))
             });
+            writer.WriteBoolean(SettingsJson.CheckForUpdatesKey, CheckForUpdates);
             
             writer.WriteEndObject();
         }
@@ -100,5 +111,6 @@ public class AppSettings {
         public const string LanguageKey = "language";
         public const string LanguageEnglishValue = "en";
         public const string LanguageRussianValue = "ru";
+        public const string CheckForUpdatesKey = "check_for_updates";
     }
 }

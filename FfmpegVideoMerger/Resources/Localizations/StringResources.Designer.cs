@@ -115,6 +115,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string CheckForUpdates {
+            get {
+                return ResourceManager.GetString("CheckForUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose.
         /// </summary>
         public static string Choose {
@@ -196,6 +205,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language:.
         /// </summary>
         public static string Language {
@@ -219,6 +237,25 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         public static string MultipleFiles {
             get {
                 return ResourceManager.GetString("MultipleFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New version available: {0}
+        ///Do you want to go to the web site to install it?.
+        /// </summary>
+        public static string NewVersionAvailable {
+            get {
+                return ResourceManager.GetString("NewVersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -363,6 +400,15 @@ namespace FfmpegVideoMerger.Resources.Localizations {
         public static string VideoRegularExpression {
             get {
                 return ResourceManager.GetString("VideoRegularExpression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
         

@@ -25,6 +25,12 @@ public class SettingsViewModel : ViewModel {
     }
     private int _currentLanguageIndexIndex;
 
+    public bool CheckForUpdates {
+        get => _checkForUpdates;
+        set => SetProperty(ref _checkForUpdates, value);
+    }
+    private bool _checkForUpdates;
+
     public SettingsViewModel() {
         _appSettings = SettingsProvider.LoadSettings();
 
@@ -40,6 +46,8 @@ public class SettingsViewModel : ViewModel {
             AppSettings.Language.Russian => 1,
             _ => throw new ArgumentOutOfRangeException(nameof(_appSettings.AppLanguage), _appSettings.AppLanguage, null)
         };
+
+        _checkForUpdates = _appSettings.CheckForUpdates;
     }
 
     protected override void OnPropertyChanged(string? propertyName = null) {
@@ -63,6 +71,9 @@ public class SettingsViewModel : ViewModel {
             case nameof(IsDark):
                 _appSettings.AppTheme = IsDark ? AppSettings.Theme.Dark : AppSettings.Theme.Light;
                 ThemeUtils.SetTheme(_appSettings.AppTheme);
+                break;
+            case nameof(CheckForUpdates):
+                _appSettings.CheckForUpdates = CheckForUpdates;
                 break;
         }
     }

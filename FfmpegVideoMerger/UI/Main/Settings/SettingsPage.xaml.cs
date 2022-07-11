@@ -19,4 +19,8 @@ public partial class SettingsPage {
     private void ColorScheme_OnMouseUp(object sender, MouseButtonEventArgs e) {
         ViewModel.IsDark = !ViewModel.IsDark;
     }
+
+    private void CheckForUpdates_OnMouseUp(object sender, MouseButtonEventArgs e) {
+        ViewModel.CheckForUpdates = !ViewModel.CheckForUpdates;
+    }
 }
