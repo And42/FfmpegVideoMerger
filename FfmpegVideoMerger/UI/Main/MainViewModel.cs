@@ -18,16 +18,12 @@ public class MainViewModel : ViewModel {
         Settings,
         AboutProgram
     }
-    
+
+    private readonly Dictionary<Page, UIElement> _pagesCache = new();
+
     public IReadOnlyList<PageViewModel> Pages { get; }
 
-    public UIElement CurrentPageContent => CurrentPage switch {
-        Page.SingleFile => new SingleFilePage(),
-        Page.MultipleFiles => new MultipleFilesPage(),
-        Page.Settings => new SettingsPage(),
-        Page.AboutProgram => new AboutProgramPage(),
-        _ => throw new ArgumentOutOfRangeException(nameof(CurrentPage), CurrentPage, null)
-    };
+    public UIElement CurrentPageContent => GetCurrentPageContent();
 
     public Page CurrentPage {
         get => _currentPage;
@@ -53,6 +49,23 @@ public class MainViewModel : ViewModel {
         foreach (var page in Pages) {
             page.IsSelected = page.Page == CurrentPage;
         }
+    }
+
+    private UIElement GetCurrentPageContent() {
+        UIElement? content;
+
+        if (!_pagesCache.TryGetValue(CurrentPage, out content)) {
+            content = CurrentPage switch {
+                Page.SingleFile => new SingleFilePage(),
+                Page.MultipleFiles => new MultipleFilesPage(),
+                Page.Settings => new SettingsPage(),
+                Page.AboutProgram => new AboutProgramPage(),
+                _ => throw new ArgumentOutOfRangeException(nameof(CurrentPage), CurrentPage, null)
+            };
+            _pagesCache[CurrentPage] = content;
+        }
+
+        return content;
     }
 
     protected override void OnPropertyChanged(string? propertyName = null) {
