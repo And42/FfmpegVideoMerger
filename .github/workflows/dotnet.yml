@@ -13,13 +13,37 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+  
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: Publish framework dependent
+      run: dotnet publish /p:PublishProfile=net-6.0-windows-x64-framework-dependent.pubxml
+
+    - name: Publish self contained
+      run: dotnet publish /p:PublishProfile=net-6.0-windows-x64-self-contained.pubxml
+
+    - name: Upload artifacts
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: net-6.0-windows-x64-framework-dependent.exe
+        path: FfmpegVideoMerger/bin/publish/Release/net6.0-windows-x64-framework-dependent/FfmpegVideoMerger.exe
+        if-no-files-found: error
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: net-6.0-windows-x64-self-contained.exe
+        path: FfmpegVideoMerger/bin/publish/Release/net6.0-windows-x64-self-contained/FfmpegVideoMerger.exe
+        if-no-files-found: error
