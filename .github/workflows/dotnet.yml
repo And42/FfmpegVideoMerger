@@ -33,6 +33,9 @@ jobs:
 
     - name: Publish self contained
       run: dotnet publish /p:PublishProfile=net-6.0-windows-x64-self-contained.pubxml
+    
+    - name: Create installer for framework dependent
+      run: iscc Installer/Installer.iss
 
     - name: Upload framework dependent
       uses: actions/upload-artifact@v3
@@ -46,4 +49,11 @@ jobs:
       with:
         name: net-6.0-windows-x64-self-contained.exe
         path: FfmpegVideoMerger/bin/publish/Release/net6.0-windows-x64-self-contained/FfmpegVideoMerger.exe
+        if-no-files-found: error
+
+    - name: Upload installer for framework dependent
+      uses: actions/upload-artifact@v3
+      with:
+        name: net-6.0-windows-x64-framework-dependent-installer.exe
+        path: Installer/Output/net6.0-windows-x64-framework-dependent.exe
         if-no-files-found: error
