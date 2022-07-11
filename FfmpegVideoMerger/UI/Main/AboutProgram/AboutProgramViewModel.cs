@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.Json;
 using FfmpegVideoMerger.Logic;
 using FfmpegVideoMerger.Logic.Storage;
@@ -18,7 +17,7 @@ public class AboutProgramViewModel : ViewModel {
 
     public AboutProgramViewModel() {
         Licenses = ParseLicenses();
-        ExecutablePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
+        ExecutablePath = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
         DataPath = StoragePathsProvider.GetDataPath();
     }
 
