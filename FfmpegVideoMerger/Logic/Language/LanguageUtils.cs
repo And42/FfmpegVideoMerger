@@ -4,7 +4,7 @@ using FfmpegVideoMerger.Logic.Settings;
 
 namespace FfmpegVideoMerger.Logic.Language; 
 
-public class LanguageUtils {
+public static class LanguageUtils {
 
     public static void SetLanguage(AppSettings.Language language) {
         var languageCode = language switch {

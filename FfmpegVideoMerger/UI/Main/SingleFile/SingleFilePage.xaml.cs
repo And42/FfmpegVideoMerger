@@ -11,7 +11,7 @@ public partial class SingleFilePage {
     }
 
     public SingleFilePage() {
-        ViewModel = new SingleFileViewModel();
+        ViewModel = App.AppComponent.SingleFileViewModel;
         
         InitializeComponent();
         

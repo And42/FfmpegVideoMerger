@@ -21,6 +21,8 @@ public class MultipleFilesViewModel : ViewModel {
 
     private const string GroupKey = "id";
 
+    private readonly AppSettings _appSettings;
+
     private CancellationTokenSource? _activeProcessCancellation;
 
     public bool IsProcessing => _activeProcessCancellation != null;
@@ -94,7 +96,10 @@ public class MultipleFilesViewModel : ViewModel {
     private readonly ActionCommand _deleteVideoFileCommand;
     private readonly ActionCommand _deleteAudioFileCommand;
 
-    public MultipleFilesViewModel() {
+    public MultipleFilesViewModel(
+        AppSettings appSettings
+    ) {
+        _appSettings = appSettings;
         _deleteVideoFileCommand = new ActionCommand(DeleteVideoFileCommandExecute, canExecute: _ => !IsProcessing);
         _deleteAudioFileCommand = new ActionCommand(DeleteAudioFileCommandExecute, canExecute: _ => !IsProcessing);
         PickVideosCommand = new ActionCommand(PickVideosCommandExecute, canExecute: () => !IsProcessing);
@@ -201,7 +206,7 @@ public class MultipleFilesViewModel : ViewModel {
             return;
         }
         
-        string ffmpegPath = SettingsProvider.LoadSettings().FfmpegPath;
+        string ffmpegPath = _appSettings.FfmpegPath;
 
         try {
             FfmpegOutput = string.Empty;

@@ -13,7 +13,7 @@ public partial class MultipleFilesPage {
     }
 
     public MultipleFilesPage() {
-        ViewModel = new MultipleFilesViewModel();
+        ViewModel = App.AppComponent.MultipleFilesViewModel;
         
         InitializeComponent();
         

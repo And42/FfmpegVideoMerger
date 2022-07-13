@@ -13,7 +13,7 @@ public partial class SettingsPage {
     }
     
     public SettingsPage() {
-        ViewModel = new SettingsViewModel();
+        ViewModel = App.AppComponent.SettingsViewModel;
         
         InitializeComponent();
         

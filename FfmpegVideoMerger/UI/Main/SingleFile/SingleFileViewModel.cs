@@ -13,6 +13,8 @@ namespace FfmpegVideoMerger.UI.Main.SingleFile;
 
 public class SingleFileViewModel : ViewModel {
 
+    private readonly AppSettings _appSettings;
+
     private CancellationTokenSource? _activeProcessCancellation;
     
     public string VideoFilePath {
@@ -53,7 +55,10 @@ public class SingleFileViewModel : ViewModel {
     public ActionCommand ProcessFileCommand { get; }
     public ActionCommand CancelProcessCommand { get; }
 
-    public SingleFileViewModel() {
+    public SingleFileViewModel(
+        AppSettings appSettings
+    ) {
+        _appSettings = appSettings;
         ChooseVideoFileCommand = new ActionCommand(ChooseVideoFileCommandExecute, () => !IsProcessing);
         ChooseAudioFileCommand = new ActionCommand(ChooseAudioFileExecute, () => !IsProcessing);
         ChooseOutputFileCommand = new ActionCommand(ChooseOutputFileCommandExecute, () => !IsProcessing);
@@ -89,7 +94,7 @@ public class SingleFileViewModel : ViewModel {
     }
 
     private async void ProcessFileCommandExecute() {
-        string ffmpegPath = SettingsProvider.LoadSettings().FfmpegPath;
+        string ffmpegPath = _appSettings.FfmpegPath;
 
         try {
             FfmpegOutput = string.Empty;

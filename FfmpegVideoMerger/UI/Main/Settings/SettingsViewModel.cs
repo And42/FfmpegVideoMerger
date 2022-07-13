@@ -41,8 +41,10 @@ public class SettingsViewModel : ViewModel {
     public ActionCommand ChooseFfmpegPathCommand { get; }
     public ActionCommand OpenFfmpegSiteCommand { get; }
 
-    public SettingsViewModel() {
-        _appSettings = SettingsProvider.LoadSettings();
+    public SettingsViewModel(
+        AppSettings appSettings
+    ) {
+        _appSettings = appSettings;
 
         _isDark = _appSettings.AppTheme == AppSettings.Theme.Dark;
 

@@ -11,7 +11,7 @@ public partial class MainWindow {
 
     public MainViewModel ViewModel {
         get => DataContext as MainViewModel ?? throw new InvalidOperationException();
-        init => DataContext = value;
+        private init => DataContext = value;
     }
 
     public MainWindow() {
