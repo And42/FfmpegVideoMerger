@@ -33,9 +33,9 @@
 
                     <TextBox
                         Grid.Column="2"
-                        IsReadOnly="True"
+                        IsReadOnly="{Binding AutoModeForRelationId, Mode=OneWay}"
                         HorizontalContentAlignment="Center"
-                        Text="{Binding RelationId, Mode=OneWay}" />
+                        Text="{Binding RelationId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                     <Button
                         Grid.Column="4"
@@ -118,39 +118,61 @@
             ItemsSource="{Binding AudioFiles}"
             ItemTemplate="{StaticResource SingleFileTemplate}" />
 
-        <DockPanel
+        <Grid
             Grid.Row="4"
-            Grid.Column="0"
-            LastChildFill="True">
+            Grid.Column="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
             <TextBlock
-                DockPanel.Dock="Left"
+                Grid.Column="0"
                 VerticalAlignment="Center"
                 Text="{x:Static localizations:StringResources.VideoRegularExpression}" />
 
             <TextBox
-                DockPanel.Dock="Left"
+                Grid.Column="1"
                 Margin="8 0 0 0"
                 Text="{Binding VideoFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-        </DockPanel>
+            <CheckBox
+                Grid.Column="2"
+                Margin="8 0 0 0"
+                IsChecked="{Binding VideoIdManualProcessingEnabled, Mode=TwoWay}"
+                Content="{x:Static localizations:StringResources.Manual}" />
 
-        <DockPanel
+        </Grid>
+
+        <Grid
             Grid.Row="4"
-            Grid.Column="2"
-            LastChildFill="True">
+            Grid.Column="2">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
             <TextBlock
-                DockPanel.Dock="Left"
+                Grid.Column="0"
                 VerticalAlignment="Center"
                 Text="{x:Static localizations:StringResources.AudioRegularExpression}" />
 
             <TextBox
-                DockPanel.Dock="Left"
+                Grid.Column="1"
                 Margin="8 0 0 0"
                 Text="{Binding AudioFilesRegex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-        </DockPanel>
+            <CheckBox
+                Grid.Column="2"
+                Margin="8 0 0 0"
+                IsChecked="{Binding AudioIdManualProcessingEnabled, Mode=TwoWay}"
+                Content="{x:Static localizations:StringResources.Manual}" />
+
+        </Grid>
 
         <StackPanel
             Grid.Row="6"

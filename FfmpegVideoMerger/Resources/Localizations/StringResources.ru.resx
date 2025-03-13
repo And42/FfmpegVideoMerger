@@ -148,4 +148,7 @@
     <data name="Download" xml:space="preserve">
         <value>Загрузить</value>
     </data>
+    <data name="Manual" xml:space="preserve">
+        <value>Вручную</value>
+    </data>
 </root>

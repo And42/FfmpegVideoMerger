@@ -87,6 +87,18 @@ public class MultipleFilesViewModel : ViewModel {
     }
     private double _progress;
 
+    public bool VideoIdManualProcessingEnabled {
+        get => _videoIdManualProcessingEnabled;
+        set => SetProperty(ref _videoIdManualProcessingEnabled, value);
+    }
+    private bool _videoIdManualProcessingEnabled;
+    
+    public bool AudioIdManualProcessingEnabled {
+        get => _audioIdManualProcessingEnabled;
+        set => SetProperty(ref _audioIdManualProcessingEnabled, value);
+    }
+    private bool _audioIdManualProcessingEnabled;
+
     public ActionCommand PickVideosCommand { get; }
     public ActionCommand PickAudiosCommand { get; }
     public ActionCommand PickOutputDirectoryCommand { get; }
@@ -267,11 +279,13 @@ public class MultipleFilesViewModel : ViewModel {
         switch (propertyName) {
             case nameof(VideoFilesRegex):
             case nameof(VideoFiles):
-                ApplyFilesRegex(VideoFiles, VideoFilesRegex);
+            case nameof(VideoIdManualProcessingEnabled):
+                UpdateVideoModels();
                 break;
             case nameof(AudioFilesRegex):
             case nameof(AudioFiles):
-                ApplyFilesRegex(AudioFiles, AudioFilesRegex);
+            case nameof(AudioIdManualProcessingEnabled):
+                UpdateAudioModels();
                 break;
             case nameof(OutputsExpression):
             case nameof(ZeroPaddingDigits):
@@ -295,6 +309,26 @@ public class MultipleFilesViewModel : ViewModel {
             newValue: id.PadLeft(ZeroPaddingDigits, '0'),
             StringComparison.Ordinal
         );
+    }
+
+    private void UpdateVideoModels() {
+        ApplyFilesRelationIdsMode(VideoFiles, VideoIdManualProcessingEnabled);
+        if (!VideoIdManualProcessingEnabled) {
+            ApplyFilesRegex(VideoFiles, VideoFilesRegex);
+        }
+    }
+    
+    private void UpdateAudioModels() {
+        ApplyFilesRelationIdsMode(AudioFiles, AudioIdManualProcessingEnabled);
+        if (!AudioIdManualProcessingEnabled) {
+            ApplyFilesRegex(AudioFiles, AudioFilesRegex);
+        }
+    }
+    
+    private static void ApplyFilesRelationIdsMode(IEnumerable<SingleFileViewModel> items, bool manualProcessingEnabled) {
+        foreach (SingleFileViewModel item in items) {
+            item.AutoModeForRelationId = !manualProcessingEnabled;
+        }
     }
     
     private static void ApplyFilesRegex(IEnumerable<SingleFileViewModel> items, string pattern) {

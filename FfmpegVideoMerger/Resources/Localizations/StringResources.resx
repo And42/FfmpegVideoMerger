@@ -247,4 +247,7 @@ Do you want to go to the web site to install it?</value>
   <data name="Download" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
 </root>

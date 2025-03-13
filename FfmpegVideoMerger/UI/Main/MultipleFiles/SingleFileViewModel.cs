@@ -16,12 +16,19 @@ public class SingleFileViewModel : ViewModel {
     }
     private string _relationId = string.Empty;
 
+    public bool AutoModeForRelationId {
+        get => _autoModeForRelationId;
+        set => SetProperty(ref _autoModeForRelationId, value);
+    }
+    private bool _autoModeForRelationId = true;
+
     public ICommand DeleteCommand { get; }
 
     public SingleFileViewModel(
         string filePath,
         ICommand deleteCommand
-    ) {
+    )
+    {
         FilePath = filePath;
         FileName = Path.GetFileName(filePath);
         DeleteCommand = deleteCommand;
