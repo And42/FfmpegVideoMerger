@@ -10,10 +10,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 6.0.x
   
@@ -36,21 +36,21 @@ jobs:
       run: iscc Installer/Installer.iss
 
     - name: Upload framework dependent
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: net-6.0-windows-x64-framework-dependent
         path: FfmpegVideoMerger/bin/publish/Release/net6.0-windows-x64-framework-dependent/FfmpegVideoMerger.exe
         if-no-files-found: error
         
     - name: Upload self contained
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: net-6.0-windows-x64-self-contained
         path: FfmpegVideoMerger/bin/publish/Release/net6.0-windows-x64-self-contained/FfmpegVideoMerger.exe
         if-no-files-found: error
 
     - name: Upload installer for framework dependent
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: net-6.0-windows-x64-framework-dependent-installer
         path: Installer/Output/net6.0-windows-x64-framework-dependent.exe
