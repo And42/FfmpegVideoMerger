@@ -2,7 +2,9 @@ name: Heavy build
 
 on:
   push:
-    branches: [ "releases/**" ]
+    branches: [ "main" ]
+    tags:
+      - "release_*"
 
 jobs:
   build:
